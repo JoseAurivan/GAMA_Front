@@ -1,0 +1,37 @@
+﻿@page "/login/cidadao"
+@using Core.Entities
+@inject NavigationManager NavigationManager
+<h3>Login</h3>
+<PageTitle>Login</PageTitle>
+
+<EditForm Model="@cidadao" OnSubmit="@PainelCidadao">
+    <div class="form-goup">
+        <label for="cpf" class="sr-only">CPF:</label>
+        <InputText id="cpf" class="form-control" placeholder="00000000000 - Apenas numeros" @bind-Value="cidadao.CPF" required />
+    </div>
+    <div class="form-group">
+        <label for="password" class="sr-only">Senha:</label>
+        <InputText type="password" class="form-control" id="password" @bind-Value="cidadao.Senha" required></InputText>
+    </div>
+    <div class="form-group">
+        <button type="submit" class="btn btn-primary">Efetuar Login</button>
+        <button type="reset" class="btn btn-outline-primary">Limpar</button>
+        <button @onclick="EfetuarCadastro" class="btn btn-outline-dark">Não Possui uma conta? Cadastre-se</button>
+    </div>
+</EditForm>
+
+
+
+
+@code {
+    private Cidadao cidadao = new Cidadao();
+
+    public void PainelCidadao()
+    {
+        NavigationManager.NavigateTo("/painel/cidadao");
+    }
+    public void EfetuarCadastro()
+    {
+        NavigationManager.NavigateTo("/cadastro/cidadao");
+    }
+}

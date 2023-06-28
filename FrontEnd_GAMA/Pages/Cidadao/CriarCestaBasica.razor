@@ -1,0 +1,31 @@
+﻿@page "/painel/cidadao/cesta"
+@using Core.Entities
+<h3>Criar Cesta Basica</h3>
+
+<EditForm Model="cestaBasica" OnSubmit="EnviarCestaBasica"> 
+    <div class="form-row">
+        <div class="form-group col-md-6">
+            <label for="descricao">Descreva Sua Situação:</label>
+            <InputTextArea id="descricao" class="form-control" @bind-Value="cestaBasica.Descricao"></InputTextArea>
+        </div>           
+    </div>
+    <div class="form-row">
+        <button type="submit" class="btn btn-primary">Enviar</button>
+        <button type="reset" class=" btn btn-outline-secondary">Limpar</button>
+    </div>
+</EditForm>
+
+<a href="/painel/cidadao"> Voltar </a>
+
+@code {
+    private CestaBasica cestaBasica = new CestaBasica();
+    private Cidadao cidadao; // Pegar pelo Id logado
+                             //TODO pegar Endereco pelo id logado
+
+    private void EnviarCestaBasica()
+    {
+        cestaBasica.NumeroProtocolo = new Guid().ToString();
+        cestaBasica.SolicitadoPor = cidadao;
+        cestaBasica.Inicio = DateTime.Now;
+    }
+}

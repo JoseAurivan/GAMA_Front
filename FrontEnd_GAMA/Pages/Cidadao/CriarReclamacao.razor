@@ -1,0 +1,34 @@
+﻿@page "/painel/cidadao/reclamacao"
+@using Core.Entities
+
+<EditForm Model="reclamacao" OnSubmit="EnviarReclamacao">
+    <div class="form-row">
+        <div class="form-group col-md-6">
+            <lable for="text">Escreva sua reclamacao</lable>
+            <InputTextArea id="texto" class="form-control" @bind-Value="reclamacao.Texto"></InputTextArea>
+        </div>
+    </div>
+    <div class="for-row">
+        <button type="submit" class="btn btn-primary">Enviar</button>
+        <button type="reset" class="btn btn-outline-secondary">Limpar</button>
+    </div>
+</EditForm>
+
+<a href="/painel/cidadao"> Voltar </a>
+
+
+@code {
+
+    private Reclamacao reclamacao = new Reclamacao();
+    private List<Secretaria> secretarias = new List<Secretaria>();
+    private int LogadoId;
+
+
+    private void EnviarReclamacao()
+    {
+        reclamacao.DataCriacao = DateTime.Now;
+        //TODO Pegar id do cidadao logado
+        //TODO pegar Id da secretaria atraves de um option
+    }
+
+}

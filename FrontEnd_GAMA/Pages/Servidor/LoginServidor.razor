@@ -1,0 +1,37 @@
+﻿@page "/login/servidor"
+@using Core.Entities
+@inject NavigationManager NavigationManager
+<h3>Login</h3>
+<PageTitle>Login</PageTitle>
+
+
+
+<EditForm Model="@servidor" OnSubmit="@PainelServidor">
+    <div class="form-goup">
+        <label for="matricula" class="sr-only">Matricula:</label>
+        <InputText id="matricula" class="form-control" placeholder="Apenas numeros" @bind-Value="servidor.CPF" required />
+    </div>
+    <div class="form-group">
+        <label for="password" class="sr-only">Senha:</label>
+        <InputText type="password" class="form-control" id="password" @bind-Value="servidor.Senha" required></InputText>
+    </div>
+    <div class="form-group">
+        <button type="submit" class="btn btn-primary">Efetuar Login</button>
+        <button type="reset" class="btn btn-outline-primary">Limpar</button>
+        <button @onclick="EfetuarCadastro" class="btn btn-outline-dark">Não Possui uma conta? Cadastre-se</button>
+    </div>
+</EditForm>
+
+@code {
+    private Servidor servidor = new Servidor();
+
+    public void PainelServidor()
+    {
+        NavigationManager.NavigateTo("/painel/servidor");
+    }
+    public void EfetuarCadastro()
+    {
+        NavigationManager.NavigateTo("/cadastro/servidor");
+    }
+
+}

@@ -1,0 +1,37 @@
+﻿@page "/painel/servidor/abrirchamado"
+@using Core.Entities
+<h3>AbrirChamado</h3>
+
+<EditForm Model="chamado" OnSubmit="RegistraChamado">
+    <div class="form-row">
+        <div class="form-group col-md-6">
+            <label for="descricao">Telefone do Requerente:</label>
+            <InputText id="descricao" placeholder="00000000000 - Apenas Números" class="form-control" @bind-Value="chamado.Telefone"></InputText>
+        </div>
+        <div class="form-group col-md-6">
+            <label for="descricao">Descreva Sua Situação:</label>
+            <InputTextArea id="descricao" class="form-control" @bind-Value="chamado.Descricao"></InputTextArea>
+        </div>
+    </div>
+    <div class="form-row">
+        <button type="submit" class="btn btn-primary">Enviar</button>
+        <button type="reset" class=" btn btn-outline-secondary">Limpar</button>
+    </div>
+</EditForm>
+
+<a href="painel/servidor">Voltar</a>
+
+@code {
+
+    private Chamado chamado = new Chamado();
+    //pegar Id servidor logado
+    //Lista de secretarias
+
+    private void RegistraChamado()
+    {
+        chamado.StatusSolicitacao = Core.Entities.Abstract.StatusSolicitacao.Aberta;
+        chamado.StatusAtendimento = StatusAtendimento.EmDia;
+        chamado.Inicio = DateTime.Now;
+    }
+
+}

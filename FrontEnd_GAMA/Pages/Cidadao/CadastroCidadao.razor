@@ -1,0 +1,61 @@
+﻿@page "/cadastro/cidadao"
+@inject HttpClient http
+@inject NavigationManager NavigationManager
+@using Core.Entities
+
+<h4>Cadastrar Cidadao</h4>
+
+<EditForm Model="@cidadao" OnSubmit="EfetuarCadastro">
+    <div class="form-row">
+        <div class="form-group col-md-6">
+            <label for="nome">Nome:</label>
+            <InputText id="nome" class="form-control" @bind-Value="cidadao.Nome"></InputText>
+        </div>
+        <div class="form-group col-md-6">
+            <label for="senha">Senha:</label>
+            <InputText type="password" class="form-control" id="senha" @bind-Value="cidadao.Senha"></InputText>
+        </div>
+    </div>
+
+    <div class="form-row">
+        <div class="form-group col-md-6">
+            <label for="cpf">CPF:</label>
+            <InputText id="cpf" class="form-control" @bind-Value="cidadao.CPF"></InputText>
+        </div>
+        <div class="form-group col-md-6">
+            <label for="pispasep">PIS/PASEP:</label>
+            <InputText id="pispasep" class="form-control" @bind-Value="cidadao.PISPASEP"></InputText>
+        </div>
+    </div>
+
+    <div class="form-row">
+        <div class="form-group col-md-6">
+            <label for="telefone">Telefone:</label>
+            <InputText id="telefone" class="form-control" @bind-Value="cidadao.Telefone"></InputText>
+        </div>
+        <div class="form-group col-md-6">
+            <label for="email">Email:</label>
+            <InputText id="email" type="email" class="form-control" @bind-Value="cidadao.Email"></InputText>
+        </div>
+    </div>
+    <button type="submit" class="btn btn-success">Cadastrar</button>
+    <button type="reset" class="btn btn-outline-warning">Limpar</button>
+</EditForm>
+
+@code {
+    private Cidadao cidadao = new Cidadao();
+
+    private async Task EfetuarCadastro()
+    {
+        cidadao.Endereco = null;
+        var response = await http.PostAsJsonAsync("cidadao", cidadao);
+        if(response.StatusCode == System.Net.HttpStatusCode.OK)
+        {
+            NavigationManager.NavigateTo("/painel/cidadao");
+        }
+        else
+        {
+           //TODO Error
+        }
+    }
+}

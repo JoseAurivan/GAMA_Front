@@ -1,0 +1,20 @@
+﻿@page "/"
+@inject NavigationManager NavigationManager
+<PageTitle>Index</PageTitle>
+
+<h1 class="h1">Bem vindos</h1>
+
+<button @onclick=@( () => IrParaLoginCidadao()) class="btn btn-primary">Logar Como Cidadao</button>
+<button @onclick=@( () => IrParaLoginServidor()) class="btn btn-primary">Logar Como Servidor</button>
+
+
+@code{
+    void IrParaLoginCidadao()
+    {
+        NavigationManager.NavigateTo("/login/cidadao");
+    }
+    void IrParaLoginServidor()
+    {
+        NavigationManager.NavigateTo("/login/servidor");
+    }
+}
