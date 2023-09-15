@@ -2,10 +2,19 @@
 @inject NavigationManager NavigationManager
 <PageTitle>Index</PageTitle>
 
-<h1 class="h1">Bem vindos</h1>
 
-<button @onclick=@( () => IrParaLoginCidadao()) class="btn btn-primary">Logar Como Cidadao</button>
-<button @onclick=@( () => IrParaLoginServidor()) class="btn btn-primary">Logar Como Servidor</button>
+
+<div class="jumbotron">
+    <h1 class="h1">Bem vindos</h1>
+    <p class="lead">Seja bem vindo ao GAMA</p>
+    <hr class="my-4">
+    <p class="lead">
+        <button @onclick=@( () => IrParaLoginCidadao()) class="btn btn-primary">Logar Como Cidadao</button>
+        <button @onclick=@( () => IrParaLoginServidor()) class="btn btn-primary">Logar Como Servidor</button>
+    </p>
+</div>
+
+
 
 
 @code{

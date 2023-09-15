@@ -2,60 +2,79 @@
 @inject HttpClient http
 @inject NavigationManager NavigationManager
 @using Core.Entities
+@using System.Text.Json.Nodes;
+@using System.Text.Json;
+@using FrontEnd_GAMA.Components;
+@using SuporteFront;
 
 <h4>Cadastrar Cidadao</h4>
 
-<EditForm Model="@cidadao" OnSubmit="EfetuarCadastro">
+<EditForm Model="@cidadaoEnderecoViewModel" OnSubmit="EfetuarCadastro">
     <div class="form-row">
         <div class="form-group col-md-6">
             <label for="nome">Nome:</label>
-            <InputText id="nome" class="form-control" @bind-Value="cidadao.Nome"></InputText>
+            <InputText id="nome" class="form-control" @bind-Value="cidadaoEnderecoViewModel.Cidadao.Nome"></InputText>
         </div>
         <div class="form-group col-md-6">
             <label for="senha">Senha:</label>
-            <InputText type="password" class="form-control" id="senha" @bind-Value="cidadao.Senha"></InputText>
+            <InputText type="password" class="form-control" id="senha" @bind-Value="cidadaoEnderecoViewModel.Cidadao.Senha"></InputText>
         </div>
     </div>
 
     <div class="form-row">
         <div class="form-group col-md-6">
             <label for="cpf">CPF:</label>
-            <InputText id="cpf" class="form-control" @bind-Value="cidadao.CPF"></InputText>
+            <InputText id="cpf" class="form-control" @bind-Value="cidadaoEnderecoViewModel.Cidadao.CPF"></InputText>
         </div>
         <div class="form-group col-md-6">
             <label for="pispasep">PIS/PASEP:</label>
-            <InputText id="pispasep" class="form-control" @bind-Value="cidadao.PISPASEP"></InputText>
+            <InputText id="pispasep" class="form-control" @bind-Value="cidadaoEnderecoViewModel.Cidadao.PISPASEP"></InputText>
         </div>
     </div>
 
     <div class="form-row">
         <div class="form-group col-md-6">
             <label for="telefone">Telefone:</label>
-            <InputText id="telefone" class="form-control" @bind-Value="cidadao.Telefone"></InputText>
+            <InputText id="telefone" class="form-control" @bind-Value="cidadaoEnderecoViewModel.Cidadao.Telefone"></InputText>
         </div>
         <div class="form-group col-md-6">
             <label for="email">Email:</label>
-            <InputText id="email" type="email" class="form-control" @bind-Value="cidadao.Email"></InputText>
+            <InputText id="email" type="email" class="form-control" @bind-Value="cidadaoEnderecoViewModel.Cidadao.Email"></InputText>
         </div>
     </div>
+
+    <EnderecoForm endereco="@cidadaoEnderecoViewModel.Endereco">
+
+    </EnderecoForm>
+
     <button type="submit" class="btn btn-success">Cadastrar</button>
     <button type="reset" class="btn btn-outline-warning">Limpar</button>
 </EditForm>
 
+@if(error is true)
+{
+    <ErrorDialog Message="@message"></ErrorDialog>
+    error = false;
+}
+
+
+
 @code {
-    private Cidadao cidadao = new Cidadao();
+    public string message = "Não foi possível cadastrar um novo cidadão no sistema.";
+    public CidadaoEnderecoViewModel cidadaoEnderecoViewModel = new CidadaoEnderecoViewModel();
+    bool error = false;
 
     private async Task EfetuarCadastro()
     {
-        cidadao.Endereco = null;
-        var response = await http.PostAsJsonAsync("cidadao", cidadao);
+       
+        var response = await http.PostAsJsonAsync<CidadaoEnderecoViewModel>("cidadao", cidadaoEnderecoViewModel);
         if(response.StatusCode == System.Net.HttpStatusCode.OK)
         {
             NavigationManager.NavigateTo("/painel/cidadao");
         }
         else
         {
-           //TODO Error
+            error = true;
         }
     }
 }

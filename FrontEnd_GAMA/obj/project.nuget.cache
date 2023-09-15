@@ -1,8 +1,19 @@
 {
   "version": 2,
-  "dgSpecHash": "Zi6KqiwH/qw++jNP2PZJuMA7g6rFHXAmhOpU2KFZPlzMS2+afSPS8Ibf266BkxHRz9w1AhQ22UfQyKG8pcnzBA==",
+  "dgSpecHash": "QsMvOormr20OdFaOl6jn7o09JbAZ0VAqKTXnbtpW2trBnAILbfhLymCmEyfsuy09BD2xgcv0SL+ChLV0tKkp4g==",
   "success": true,
   "projectFilePath": "C:\\Users\\auriv\\OneDrive\\Área de Trabalho\\Pós Graduaçao\\ProjetoIntegrador\\FrontEnd_GAMA\\FrontEnd_GAMA\\FrontEnd_GAMA.csproj",
-  "expectedPackageFiles": [],
+  "expectedPackageFiles": [
+    "C:\\Users\\auriv\\.nuget\\packages\\microsoft.aspnetcore.authorization\\6.0.22\\microsoft.aspnetcore.authorization.6.0.22.nupkg.sha512",
+    "C:\\Users\\auriv\\.nuget\\packages\\microsoft.aspnetcore.components\\6.0.22\\microsoft.aspnetcore.components.6.0.22.nupkg.sha512",
+    "C:\\Users\\auriv\\.nuget\\packages\\microsoft.aspnetcore.components.analyzers\\6.0.22\\microsoft.aspnetcore.components.analyzers.6.0.22.nupkg.sha512",
+    "C:\\Users\\auriv\\.nuget\\packages\\microsoft.aspnetcore.components.authorization\\6.0.22\\microsoft.aspnetcore.components.authorization.6.0.22.nupkg.sha512",
+    "C:\\Users\\auriv\\.nuget\\packages\\microsoft.aspnetcore.metadata\\6.0.22\\microsoft.aspnetcore.metadata.6.0.22.nupkg.sha512",
+    "C:\\Users\\auriv\\.nuget\\packages\\microsoft.extensions.dependencyinjection.abstractions\\6.0.0\\microsoft.extensions.dependencyinjection.abstractions.6.0.0.nupkg.sha512",
+    "C:\\Users\\auriv\\.nuget\\packages\\microsoft.extensions.logging.abstractions\\6.0.4\\microsoft.extensions.logging.abstractions.6.0.4.nupkg.sha512",
+    "C:\\Users\\auriv\\.nuget\\packages\\microsoft.extensions.options\\6.0.0\\microsoft.extensions.options.6.0.0.nupkg.sha512",
+    "C:\\Users\\auriv\\.nuget\\packages\\microsoft.extensions.primitives\\6.0.0\\microsoft.extensions.primitives.6.0.0.nupkg.sha512",
+    "C:\\Users\\auriv\\.nuget\\packages\\system.runtime.compilerservices.unsafe\\6.0.0\\system.runtime.compilerservices.unsafe.6.0.0.nupkg.sha512"
+  ],
   "logs": []
 }

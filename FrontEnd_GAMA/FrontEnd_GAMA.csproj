@@ -7,7 +7,12 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.Components.Authorization" Version="6.0.22" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\..\BackEnd_GAMA\BackEnd_GAMA\Core.csproj" />
+    <ProjectReference Include="..\..\BackEnd_GAMA\SuporteFront\SuporteFront.csproj" />
   </ItemGroup>
 
 </Project>

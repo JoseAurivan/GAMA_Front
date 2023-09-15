@@ -1,5 +1,7 @@
 ﻿@page "/painel/cidadao/listartelefone"
+@inject HttpClient http
 @using Core.Entities
+@using System.Text.Json;
 
 <h3>Telefones Uteis</h3>
 
@@ -12,8 +14,13 @@
     </thead>
    <tbody>
        <tr>
+           @if(secretarias.Count ==0)
+            {
+                <FrontEnd_GAMA.Components.Loading>
 
-       </tr>
+                </FrontEnd_GAMA.Components.Loading>
+            }
+        </tr>
    </tbody>
 
 </table>
@@ -23,5 +30,12 @@
 @code {
     public List<Secretaria> secretarias = new List<Secretaria>();
 
-    //TODO listar todas as secretarias e exibir o nome delas
+    protected override async Task OnInitializedAsync()
+    {
+        var response = await http.GetFromJsonAsync<IEnumerable<Secretaria>>("secretaria");
+        if(response is not null)
+            secretarias = response.ToList();
+
+        await base.OnInitializedAsync();
+    }
 }

@@ -1,5 +1,36 @@
-﻿<h3>LoginAdm</h3>
+﻿@page "/adm"
+@inject NavigationManager Navigation
+@using FrontEnd_GAMA.ViewModels;
+
+
+<h3>Login para Painel de Controle da Administração</h3>
+<EditForm Model="@adminViewModel" OnSubmit="Logar">
+    <div class="form-goup">
+        <label for="cpf" class="sr-only">Login</label>
+        <InputText id="cpf" class="form-control" @bind-Value="adminViewModel.login" placeholder="00000000000 - Apenas numeros" required />
+    </div>
+    <div class="form-group">
+        <label for="password" class="sr-only">PASSWORD:</label>
+        <InputText type="password" class="form-control" id="password" @bind-Value="adminViewModel.password" required></InputText>
+    </div>
+    <div class="form-group">
+        <button type="submit" class="btn btn-primary">Efetuar Login</button>
+        <button type="reset" class="btn btn-outline-primary">Limpar</button>
+    </div>
+
+</EditForm>
+
+
 
 @code {
+    private AdminViewModel adminViewModel = new AdminViewModel();
 
+    public void Logar()
+    {
+        if (adminViewModel.ComparePasswordAndLogin()) Navigation.NavigateTo("/adm/dash");
+        else
+        {
+            //TODO modal de erro
+        }
+    }
 }

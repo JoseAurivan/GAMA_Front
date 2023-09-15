@@ -1,4 +1,6 @@
 ﻿@page "/cadastro/servidor"
+@inject HttpClient http
+@inject NavigationManager navigation
 @using Core.Entities
 <h3>Cadastro de Servidor</h3>
 
@@ -43,14 +45,33 @@
 
 
 @code {
+    List<Secretaria> secretarias = new List<Secretaria>();
+    List<Cargo> cargos = new List<Cargo>();
 
-    //TODO LISTA DE SECRETARIAS
-    //TODO LISTA DE CARGOS
 
     private Servidor servidor = new Servidor();
 
-    private void EfetuarCadastro()
+    protected override async Task OnInitializedAsync()
     {
-        
+        var secretariasResponse = await http.GetFromJsonAsync<IEnumerable<Secretaria>>("secretaria");
+        var cargosResponse = await  http.GetFromJsonAsync<IEnumerable<Cargo>>("cargo");
+
+        if (secretariasResponse is not null)
+            secretarias = secretariasResponse.ToList();
+        if (cargosResponse is not null)
+            cargos = cargosResponse.ToList();
+
+        await base.OnInitializedAsync();
+    }
+
+    private async Task EfetuarCadastro()
+    {
+        var response = await http.PostAsJsonAsync<Servidor>("servidor", servidor);
+
+        if (response.StatusCode == System.Net.HttpStatusCode.OK)
+        {
+            navigation.NavigateTo("/painel/servidor");
+        }
+
     }
 }

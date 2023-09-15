@@ -1,0 +1,16 @@
+﻿@page "/adm/dash/operar/familia"
+@using FrontEnd_GAMA.Singleton;
+@inject NavigationManager navigation
+@inject AdmOperationEntity ops;
+<h3>DashboardADM</h3>
+
+
+
+@code {
+
+    public void Navigate()
+    {
+        navigation.NavigateTo("/adm/" + ops.Operation + "/" + ops.Entity);
+    }
+
+}

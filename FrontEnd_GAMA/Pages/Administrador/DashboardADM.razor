@@ -1,5 +1,37 @@
-﻿<h3>DashboardADM</h3>
+﻿@page "/adm/dash"
+@using FrontEnd_GAMA.Singleton;
+@inject NavigationManager navigation
+@inject AdmOperationEntity ops;
+<h3>DashboardADM</h3>
+
+<EditForm Model="@ops" OnSubmit="Navigate">
+<div class="form-row">
+    <select @bind=@operation required>
+        <option value="add" selected >Adicionar</option>
+        <option value="operar">Remover/Editar</option>
+    </select>
+    <select @bind=@entity required>
+        <option value="Cidadao" selected>Cidadao</option>
+        <option value="Servidor">Servidor</option>
+        <option value="Secretaria">Secretaria</option>
+        <option value="Reclamacao">Reclamacao</option>
+        <option value="Cesta">Cestas</option>
+        <option value="Chamado">Chamado</option>
+        <option value="Cargo">Cargo</option>
+        <option value="Endereco">Endereco</option>
+    </select>
+</div>
+    <button type="submit" class="btn btn-success">Ir</button>
+</EditForm>
 
 @code {
+    public string entity = "";
+    public string operation = "";
+    public void Navigate()
+    {
+        ops.Operation = operation;
+        ops.Entity = entity;
+        navigation.NavigateTo("/adm/dash/" + ops.Operation+"/"+ops.Entity);
+    }
 
 }
