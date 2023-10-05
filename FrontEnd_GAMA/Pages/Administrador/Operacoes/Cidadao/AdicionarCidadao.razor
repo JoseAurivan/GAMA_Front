@@ -105,6 +105,11 @@ else
 
     public async Task EfetuarCadastro()
     {
+        if (ChecarSeExisteLetra(cidadaoEnderecoViewModel.Cidadao.CPF))
+        {
+            toast.ShowError("Apenas valores numéricos no cpf");
+            return;
+        }
         toast.ShowInfo("EnviandoRequisição");
         var response = await http.PostAsJsonAsync<CidadaoEnderecoViewModel>("cidadao", cidadaoEnderecoViewModel);
         if(response.IsSuccessStatusCode)
@@ -121,5 +126,17 @@ else
                 navigation.NavigateTo("/adm/dash/add/cidadao", true);
             }
         }
+    }
+
+    public bool ChecarSeExisteLetra(string input)
+    {
+        foreach (char c in input)
+        {
+            if (char.IsLetter(c))
+            {
+                return true;
+            }
+        }
+        return false;
     }
 }

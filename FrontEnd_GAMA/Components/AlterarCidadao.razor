@@ -1,5 +1,6 @@
 ﻿@using Core.Entities;
 @inject HttpClient http;
+@inject IToastService toast
 
 <div class="modal fade show" id="myModal" style="display:block; background-color: rgba(10,10,10,.8);" aria-modal="true" role="dialog">
     <div class="modal-dialog">
@@ -80,6 +81,11 @@
 
     public async Task MudarCidadao()
     {
+        if(ChecarSeExisteLetra(cidadao.CPF))
+        {
+            toast.ShowError("Somente valores númericos no CPF");
+            return;
+        }
         var response = await http.PutAsJsonAsync<Cidadao>("cidadao/"+Id, cidadao);
         await Modal.CloseAsync();
     }
@@ -87,6 +93,18 @@
     public async Task FecharModal()
     {
         await Modal.CancelAsync();
+    }
+
+    public bool ChecarSeExisteLetra(string input)
+    {
+        foreach (char c in input)
+        {
+            if (char.IsLetter(c))
+            {
+                return true;
+            }
+        }
+        return false;
     }
 
 

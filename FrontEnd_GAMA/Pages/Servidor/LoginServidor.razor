@@ -32,6 +32,11 @@
 
     public async Task PainelServidor()
     {
+        if(ChecarSeExisteLetra(servidor.Matricula))
+        {
+            toast.ShowError("Campo matrícula deve ser apenas números");
+            return;
+        }
         toast.ShowInfo("Logando Usuário");
         var response = await http.PostAsJsonAsync<LoginServidorViewModel>("login/servidor", servidor);
         if (response.StatusCode == System.Net.HttpStatusCode.OK)
@@ -52,6 +57,18 @@
     public void EfetuarCadastro()
     {
         NavigationManager.NavigateTo("/cadastro/servidor");
+    }
+
+    public bool ChecarSeExisteLetra(string input)
+    {
+        foreach (char c in input)
+        {
+            if (char.IsLetter(c))
+            {
+                return true;
+            }
+        }
+        return false;
     }
 
 }

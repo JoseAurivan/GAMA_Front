@@ -1,5 +1,6 @@
 ﻿@using Core.Entities
 @inject HttpClient http;
+@inject IToastService toast;
 
 
 <div class="modal fade show" id="myModal" style="display:block; background-color: rgba(10,10,10,.8);" aria-modal="true" role="dialog">
@@ -25,11 +26,11 @@
                     <div class="form-row">
                         <div class="form-group col-md-6">
                             <label for="cpf">CPF:</label>
-                            <InputText id="cpf" required class="form-control" @bind-Value="servidor.CPF"></InputText>
+                            <InputText id="cpf" required class="form-control" placeholder="Apenas valores numéricos" @bind-Value="servidor.CPF"></InputText>
                         </div>
                         <div class="form-group col-md-6">
                             <label for="pispasep">Matricula:</label>
-                            <InputText id="pispasep" required class="form-control" @bind-Value="servidor.Matricula"></InputText>
+                            <InputText id="pispasep" required class="form-control" placeholder="Apenas valores numéricos" @bind-Value="servidor.Matricula"></InputText>
                         </div>
                     </div>
 
@@ -72,6 +73,11 @@
 
     public async Task MudarServidor()
     {
+        if(ChecarSeExisteLetra(servidor.CPF) || ChecarSeExisteLetra(servidor.Matricula))
+        {
+            toast.ShowError("Apenas valores numéricos");
+            return;
+        }
         var response = await http.PutAsJsonAsync<Servidor>("servidor", servidor);
     }
 
@@ -79,5 +85,17 @@
     public async Task FecharModal()
     {
         await Modal.CancelAsync();
+    }
+
+    public bool ChecarSeExisteLetra(string input)
+    {
+        foreach (char c in input)
+        {
+            if (char.IsLetter(c))
+            {
+                return true;
+            }
+        }
+        return false;
     }
 }

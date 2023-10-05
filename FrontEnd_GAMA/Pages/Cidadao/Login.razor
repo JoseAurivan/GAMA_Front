@@ -34,6 +34,11 @@
 
     public async Task PainelCidadao()
     {
+        if (ChecarSeExisteLetra(cidadao.Cpf))
+        {
+            toast.ShowError("Campo CPF somente números");
+            return;
+        }
         toast.ShowInfo("Fazendo Login..");
         var response =  await http.PostAsJsonAsync<LoginCidadaoViewModel>("login/cidadao", cidadao);
 
@@ -65,4 +70,17 @@
     {
         NavigationManager.NavigateTo("/cadastro/cidadao");
     }
+
+    public bool ChecarSeExisteLetra(string input)
+    {
+        foreach (char c in input)
+        {
+            if (char.IsLetter(c))
+            {
+                return true;
+            }
+        }
+        return false;
+    }
 }
+

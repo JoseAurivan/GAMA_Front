@@ -135,6 +135,11 @@ else
 
     public async Task EfetuarCadastro()
     {
+        if (ChecarSeExisteLetra(servidor.CPF) || ChecarSeExisteLetra(servidor.Matricula))
+        {
+            toast.ShowError("Apenas valores numéricos");
+            return;
+        }
         toast.ShowInfo("Enviando Requisição");
         var response = await http.PostAsJsonAsync<ServidorViewModel>("servidor", servidor);
 
@@ -152,5 +157,17 @@ else
                 Reload();
             }
         }
+    }
+
+    public bool ChecarSeExisteLetra(string input)
+    {
+        foreach (char c in input)
+        {
+            if (char.IsLetter(c))
+            {
+                return true;
+            }
+        }
+        return false;
     }
 }
