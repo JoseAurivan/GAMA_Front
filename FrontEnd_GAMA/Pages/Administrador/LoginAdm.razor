@@ -1,5 +1,9 @@
 ﻿@page "/adm"
 @inject NavigationManager Navigation
+@inject HttpClient http;
+@inject ILocalStorageService localStorage;
+@inject AuthenticationStateProvider auth;
+@inject IToastService toast
 @using FrontEnd_GAMA.ViewModels;
 
 
@@ -24,13 +28,27 @@
 
 @code {
     private AdminViewModel adminViewModel = new AdminViewModel();
+    [CascadingParameter] public IModalService ModalService { get; set; }
 
-    public void Logar()
+    public async Task Logar()
     {
-        if (adminViewModel.ComparePasswordAndLogin()) Navigation.NavigateTo("/adm/dash");
+        toast.ShowInfo("Autenticando");
+        if (adminViewModel.ComparePasswordAndLogin())
+        {
+            var response = await http.GetAsync("login/adm");
+            if (response.IsSuccessStatusCode)
+            {
+                toast.ShowSuccess("Autenticado");
+                var token = await response.Content.ReadAsStringAsync();
+                await localStorage.SetItemAsync("token", token);
+                http.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", token);
+                Navigation.NavigateTo("/adm/dash");
+            }
+        }
         else
         {
-            //TODO modal de erro
+            toast.ShowError("Dados incorretos");
+            ModalService.Show<FrontEnd_GAMA.Components.ErrorDialog>("Dados Incorretos");
         }
     }
 }

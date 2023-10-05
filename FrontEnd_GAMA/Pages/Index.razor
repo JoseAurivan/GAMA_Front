@@ -1,8 +1,7 @@
 ﻿@page "/"
 @inject NavigationManager NavigationManager
+@inject IToastService toast
 <PageTitle>Index</PageTitle>
-
-
 
 <div class="jumbotron">
     <h1 class="h1">Bem vindos</h1>
@@ -18,6 +17,17 @@
 
 
 @code{
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        await base.OnAfterRenderAsync(firstRender);
+    }
+
+    protected override Task OnInitializedAsync()
+    {
+        toast.ShowInfo("Bem vindo ao Sistema GAMA");
+        return base.OnInitializedAsync();
+    }
+
     void IrParaLoginCidadao()
     {
         NavigationManager.NavigateTo("/login/cidadao");

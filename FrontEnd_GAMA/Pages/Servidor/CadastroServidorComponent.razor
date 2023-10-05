@@ -1,0 +1,136 @@
+﻿@inject HttpClient http
+@inject NavigationManager navigation
+@inject ILocalStorageService local
+@inject IToastService toast
+@using SuporteFront
+@using Core.Entities
+
+<EditForm Model="@servidor" OnSubmit="EfetuarCadastro">
+    <div class="form-row">
+        <div class="form-group col-md-6">
+            <label for="nome">Nome:</label>
+            <InputText id="nome" required class="form-control" @bind-Value="servidor.Nome"></InputText>
+        </div>
+        <div class="form-group col-md-6">
+            <label for="senha">Senha:</label>
+            <InputText type="password" required class="form-control" id="senha" @bind-Value="servidor.Senha"></InputText>
+        </div>
+    </div>
+
+    <div class="form-row">
+        <div class="form-group col-md-6">
+            <label for="cpf">CPF:</label>
+            <InputText id="cpf" required class="form-control" @bind-Value="servidor.CPF"></InputText>
+        </div>
+        <div class="form-group col-md-6">
+            <label for="pispasep">Matricula:</label>
+            <InputText id="pispasep" required class="form-control" @bind-Value="servidor.Matricula"></InputText>
+        </div>
+    </div>
+
+    <div class="form-row">
+        <div class="form-group col-md-6">
+            <label for="telefone">Telefone:</label>
+            <InputText id="telefone" required class="form-control" @bind-Value="servidor.Telefone"></InputText>
+        </div>
+        <div class="form-group col-md-6">
+            <label for="email">Email:</label>
+            <InputText id="email" required type="email" class="form-control" @bind-Value="servidor.Email"></InputText>
+        </div>
+    </div>
+    <div class="form-row">
+        <div class="form-group col-md-6">
+            <label for="text">Secretaria Destino</label>
+            <InputSelect class="form-control" @bind-Value="servidor.SecretariaId" required>
+                <option selected>....</option>
+                @foreach (var secretaria in secretarias)
+                {
+                    <option value="@secretaria.Id">@secretaria.Nome</option>
+                }
+            </InputSelect>
+        </div>
+        <div class="form-group col-md-6">
+            <lable for="text"> Cargo</lable>
+            <InputSelect class="form-control" @bind-Value="servidor.CargoId" required>
+                <option selected>....</option>
+                @foreach (var cargo in cargos)
+                {
+                    <option value="@cargo.Id">@cargo.Nome/@cargo.Hierarquia</option>
+                }
+            </InputSelect>
+        </div>
+    </div>
+    <button type="submit" class="btn btn-success">Cadastrar</button>
+    <button type="reset" class="btn btn-outline-warning">Limpar</button>
+</EditForm>
+
+
+
+
+@code {
+    List<Secretaria> secretarias = new List<Secretaria>();
+    List<Cargo> cargos = new List<Cargo>();
+
+
+    [Parameter] public ServidorViewModel servidor { get; set;}
+    [CascadingParameter] public IModalService modal { get; set; }
+
+    protected override async Task OnInitializedAsync()
+    {
+        toast.ShowInfo("Adquirindo Secretarias e Cargos disponíveis");
+        var secretariasResponse = await http.GetFromJsonAsync<IEnumerable<Secretaria>>("secretaria");
+        var cargosResponse = await http.GetFromJsonAsync<IEnumerable<Cargo>>("cargo");
+
+        if (secretariasResponse is not null)
+            secretarias = secretariasResponse.ToList();
+        if (cargosResponse is not null)
+            cargos = cargosResponse.ToList();
+
+        await base.OnInitializedAsync();
+    }
+
+    private async Task EfetuarCadastro()
+    {
+        toast.ShowInfo("Fazendo cadastro");
+        var response = await http.PostAsJsonAsync<ServidorViewModel>("servidor", servidor);
+
+        if (response.StatusCode == System.Net.HttpStatusCode.OK)
+        {
+            toast.ShowSuccess("Cadastrado com sucesso");
+            var srvLogin = new LoginServidorViewModel();
+            srvLogin.Matricula = servidor.Matricula;
+            srvLogin.Password = servidor.Senha;
+            var authResponse = await http.PostAsJsonAsync<LoginServidorViewModel>("login/servidor", srvLogin);
+            if(authResponse.IsSuccessStatusCode)
+            { 
+                toast.ShowSuccess("Autenticado");
+                var token = await authResponse.Content.ReadAsStringAsync();
+                await local.SetItemAsync("token", token);
+                http.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", token);
+                navigation.NavigateTo("/painel/servidor");
+            }
+            else
+            {
+                toast.ShowError("Erro na autenticação");
+                var modalScreen = modal.Show<FrontEnd_GAMA.Components.ErrorDialog>("Falha na autenticação");
+                var result = await modalScreen.Result;
+                if (result is not null)
+                {
+                    navigation.NavigateTo("/cadastro/servidor", true);
+                }
+            }
+
+        }
+        else
+        {
+            toast.ShowError("Erro no cadastro");
+            var modalScreen = modal.Show<FrontEnd_GAMA.Components.ErrorDialog>();
+            var result = await modalScreen.Result;
+            if (result is not null)
+            {
+                navigation.NavigateTo("/cadastro/servidor", true);
+            }
+        }
+
+    }
+}

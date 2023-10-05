@@ -5,7 +5,7 @@
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title">Modal title</h5>
+                <h5 class="modal-title">Erro !!!</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
@@ -15,7 +15,7 @@
                 <p>@Message</p>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="button" @onclick="(async () => await ModalInstance.CancelAsync())" class="btn btn-primary">Cancelar</button>
             </div>
         </div>
     </div>
@@ -24,4 +24,5 @@
 @code {
     [Parameter]
     public string Message { get; set; }
+    [CascadingParameter] BlazoredModalInstance ModalInstance { get; set; }
 }

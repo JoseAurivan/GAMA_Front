@@ -1,0 +1,25 @@
+﻿@inject HttpClient http;
+@page "/deleteConfirm"
+
+            <div class="modal-body">
+                <p>Deseja Deletar este(a) @Entity com id: @Id ?</p>
+                <p>Essa é uma operação sem volta.</p>
+
+            </div>
+                <button type="button" @onclick="(async () => await Delete())" class="btn btn-danger" >Deletar</button>
+                <button type="button" @onclick="(async () => await ModalInstance.CancelAsync())" class="btn btn-primary" >Cancelar</button>
+
+
+@code {
+    [CascadingParameter] BlazoredModalInstance ModalInstance { get; set; }
+
+    [Parameter] public string Entity { get; set; }
+    [Parameter] public int Id { get; set; }
+
+    private async Task Delete()
+    {
+        var response = await http.DeleteAsync(Entity.ToLower()+"/"+Id);
+        await ModalInstance.CloseAsync();
+
+    }
+}

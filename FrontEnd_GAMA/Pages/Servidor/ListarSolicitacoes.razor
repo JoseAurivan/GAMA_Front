@@ -1,27 +1,124 @@
 ﻿@page "/painel/servidor/solicitacoes"
 @inject HttpClient http
+@inject ILocalStorageService local
+@inject NavigationManager navigation
+@inject IToastService toast
+@using SuporteFront
+@using Core.Entities
+@using System.Text.Json;
 
+@if(isAuth)
+{
+    <FrontEnd_GAMA.Components.Logout UserName="@Matricula">
+
+    </FrontEnd_GAMA.Components.Logout>
 <h3>Solicitações</h3>
 <table class="table table-dark">
     <thead>
         <tr>
-            <th scope="col">Comando</th>
             <th scope="col">Solicitado Por</th>
-            <th scope="col">Endereco</th>
+            <th scope="col">Destino</th>
             <th scope="col">Status</th>
-            <th scope="col">Tipo</th>
+            <th scope="col">Começou</th>
         </tr>
     </thead>
    <tbody>
        <tr>
+           @if(chamados.Count == 0)
+                {
+                    <FrontEnd_GAMA.Components.Loading>
+
+                    </FrontEnd_GAMA.Components.Loading>
+                }
+                else
+                {
+                    @foreach(var chamado in chamados)
+                    {
+                        <td scope="col">@chamado.SolicitadoPor.Nome</td>
+                        <td scope="col">@chamado.SecretariaDestino.Nome</td>
+                        <td scope="col">@chamado.StatusSolicitacao</td>
+                        <td scope="col">@chamado.Inicio</td>
+                    }
+                }
 
        </tr>
    </tbody>
 
 </table>
 
-<a href="painel/servidor">Voltar</a>
+    <a href="painel/servidor">Voltar</a>
+}
+else
+{
+    <FrontEnd_GAMA.Components.SemAutorizacao>
+
+    </FrontEnd_GAMA.Components.SemAutorizacao>
+}
 
 @code {
-    //TODO checar qual secretaria o servidor pertence
+    private bool isAuth = false;
+    private string Matricula = "";
+    private Secretaria secretaria = new Secretaria();
+    private List<Chamado> chamados = new List<Chamado>();
+    [CascadingParameter] public IModalService ModalService { get; set; }
+
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        var value = await local.GetItemAsync<string>("token");
+        TokenViewModel token = new TokenViewModel();
+        token.token = value;
+
+        if (!firstRender && !string.IsNullOrEmpty(value))
+            http.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", value);
+        
+        if(firstRender)
+            toast.ShowInfo("Autenticando");
+
+        var response = await http.PostAsJsonAsync<TokenViewModel>("login/auth", token);
+
+        if (response.StatusCode == System.Net.HttpStatusCode.OK)
+        {
+            if(firstRender)
+                toast.ShowSuccess("Autenticado");
+            Matricula = await response.Content.ReadAsStringAsync();
+            isAuth = true;
+        }
+        else
+        {
+            isAuth = false;
+        }
+
+        if(isAuth)
+        {
+            var path = "servidor/matricula/" + Matricula;
+            try
+            {
+                if(firstRender)toast.ShowInfo("Encontrando sua secretaria");
+                var result = await http.GetFromJsonAsync<Secretaria>(path);
+                if (result is not null)
+                {
+                    if(firstRender)toast.ShowSuccess("Encontrada. Buscando chamados");
+                    secretaria = result;
+                }
+            }catch(Exception ex)
+            {
+                if(firstRender)toast.ShowError("Falha ao listar chamados, indo para index");
+                ModalService.Show<FrontEnd_GAMA.Components.ErrorDialog>();
+                navigation.NavigateTo("/",true);
+            }
+
+        }
+        if(secretaria is not null)
+        {
+            var cha = await http.GetFromJsonAsync<IEnumerable<Chamado>>("chamado/secretaria/" + secretaria.Id);
+            if(cha is not null && cha.Count() > 0)
+            {
+                if(firstRender)toast.ShowSuccess("Chamados Encontrados");
+                chamados = cha.ToList();
+            }
+
+        }
+        StateHasChanged();
+        await base.OnAfterRenderAsync(firstRender);
+    }
 }

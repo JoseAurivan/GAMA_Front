@@ -1,18 +1,25 @@
-﻿<CascadingAuthenticationState>
-    <Router AppAssembly="@typeof(App).Assembly">
-        <Found Context="routeData">
-            <AuthorizeRouteView RouteData="@routeData" DefaultLayout="@typeof(MainLayout)" >
-                <NotAuthorized>
-                    Credenciais inválidas, realize login com usuário válido no sistema.
-                </NotAuthorized>
-            </AuthorizeRouteView>
-            <FocusOnNavigate RouteData="@routeData" Selector="h1" />
-        </Found>
-        <NotFound>
-            <PageTitle>Não tem nada aqui</PageTitle>
-            <LayoutView Layout="@typeof(MainLayout)">
-                <p role="alert">Não tem nada nesse endereço</p>
-            </LayoutView>
-        </NotFound>
-    </Router>
+﻿
+<CascadingAuthenticationState>
+    <CascadingBlazoredModal>
+
+        <Router AppAssembly="@typeof(App).Assembly">
+            <Found Context="routeData">
+                <AuthorizeRouteView RouteData="@routeData" DefaultLayout="@typeof(MainLayout)">
+                    <NotAuthorized>
+                        Credenciais inválidas, realize login com usuário válido no sistema.
+                    </NotAuthorized>
+                </AuthorizeRouteView>
+                <FocusOnNavigate RouteData="@routeData" Selector="h1" />
+            </Found>
+            <NotFound>
+                <PageTitle>Não tem nada aqui</PageTitle>
+                <LayoutView Layout="@typeof(MainLayout)">
+                    <p role="alert">Não tem nada nesse endereço</p>
+                </LayoutView>
+            </NotFound>
+        </Router>
+
+    </CascadingBlazoredModal>
 </CascadingAuthenticationState>
+
+

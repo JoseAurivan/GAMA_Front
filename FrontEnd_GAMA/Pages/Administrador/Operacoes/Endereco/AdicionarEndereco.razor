@@ -1,12 +1,84 @@
 ﻿@page "/adm/dash/add/endereco"
 @using FrontEnd_GAMA.Singleton;
 @using System.Reflection;
+@using Core.Entities;
+@using SuporteFront
+@inject HttpClient http;
 @inject NavigationManager navigation
 @inject AdmOperationEntity ops
+@inject ILocalStorageService local
+@inject IToastService toast
+
+@if(isAuth)
+{
+    <FrontEnd_GAMA.Components.Logout>
+
+    </FrontEnd_GAMA.Components.Logout>
+    <FrontEnd_GAMA.Components.Component>
+
+    </FrontEnd_GAMA.Components.Component>
 <h3>Adicionar @ops.Entity</h3>
 
+<EditForm Model="endereco" OnSubmit="Enviar">
+    <FrontEnd_GAMA.Components.EnderecoForm endereco="@endereco">
 
+    </FrontEnd_GAMA.Components.EnderecoForm>
+    <input type="submit" class="btn-primary" />
+    </EditForm>
+}
+else
+{
+    <FrontEnd_GAMA.Components.SemAutorizacao>
+
+    </FrontEnd_GAMA.Components.SemAutorizacao>
+}
 
 @code {
+    public Endereco endereco = new Endereco();
+    private bool isAuth = false;
+    private string Name { get; set; }
+    [CascadingParameter] public IModalService ModalService { get; set; }
 
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        var value = await local.GetItemAsync<string>("token");
+        TokenViewModel token = new TokenViewModel();
+        token.token = value;
+
+        if (!firstRender && !string.IsNullOrEmpty(value))
+            http.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", value);
+
+        if (firstRender) toast.ShowInfo("Autenticando");
+
+        var response = await http.PostAsJsonAsync<TokenViewModel>("login/auth", token);
+
+        if (response.StatusCode == System.Net.HttpStatusCode.OK)
+        {
+            if (firstRender) toast.ShowInfo("Autenticado");
+            Name = await response.Content.ReadAsStringAsync();
+            isAuth = true;
+        }
+        else isAuth = false;
+        StateHasChanged();
+        await base.OnAfterRenderAsync(firstRender);
+    }
+
+    public async Task Enviar()
+    {
+        var response = await http.PostAsJsonAsync<Endereco>("endereco", endereco);
+        if (response.IsSuccessStatusCode)
+        {
+            toast.ShowSuccess("Endereco adicionado com sucesso");
+            navigation.NavigateTo("/adm/dash/add/endereco",true);
+        }
+        else
+        {
+            var modal = ModalService.Show<FrontEnd_GAMA.Components.ErrorDialog>();
+            var result = await modal.Result;
+            if (result is not null)
+            {
+                navigation.NavigateTo("/adm/dash/add/endereco", true);
+            }
+        }
+    }
 }

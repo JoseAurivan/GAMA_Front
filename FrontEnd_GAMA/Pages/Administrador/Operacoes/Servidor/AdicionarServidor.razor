@@ -1,12 +1,156 @@
 ﻿@page "/adm/dash/add/servidor"
 @using FrontEnd_GAMA.Singleton;
 @using System.Reflection;
+@using Core.Entities;
+@using SuporteFront;
 @inject NavigationManager navigation
 @inject AdmOperationEntity ops
-<h3>Adicionar @ops.Entity</h3>
+@inject HttpClient http
+@inject ILocalStorageService local
+@inject IToastService toast
+@if (isAuth)
+{
+    <FrontEnd_GAMA.Components.Logout UserName="@Name">
 
+    </FrontEnd_GAMA.Components.Logout>
+    <FrontEnd_GAMA.Components.Component>
+
+    </FrontEnd_GAMA.Components.Component>
+    <h3>Adicionar @ops.Entity</h3>
+
+    <EditForm Model="@servidor" OnSubmit="EfetuarCadastro">
+        <div class="form-row">
+            <div class="form-group col-md-6">
+                <label for="nome">Nome:</label>
+                <InputText id="nome" required class="form-control" @bind-Value="servidor.Nome"></InputText>
+            </div>
+            <div class="form-group col-md-6">
+                <label for="senha">Senha:</label>
+                <InputText type="password" required class="form-control" id="senha" @bind-Value="servidor.Senha"></InputText>
+            </div>
+        </div>
+
+        <div class="form-row">
+            <div class="form-group col-md-6">
+                <label for="cpf">CPF:</label>
+                <InputText id="cpf" required class="form-control" @bind-Value="servidor.CPF"></InputText>
+            </div>
+            <div class="form-group col-md-6">
+                <label for="pispasep">Matricula:</label>
+                <InputText id="pispasep" required class="form-control" @bind-Value="servidor.Matricula"></InputText>
+            </div>
+        </div>
+
+        <div class="form-row">
+            <div class="form-group col-md-6">
+                <label for="telefone">Telefone:</label>
+                <InputText id="telefone" required class="form-control" @bind-Value="servidor.Telefone"></InputText>
+            </div>
+            <div class="form-group col-md-6">
+                <label for="email">Email:</label>
+                <InputText id="email" required type="email" class="form-control" @bind-Value="servidor.Email"></InputText>
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="form-group col-md-6">
+                <lable for="text">Secretaria Destino</lable>
+                <InputSelect id="texto" class="form-control" @bind-Value="servidor.SecretariaId">
+                    @foreach (var secretaria in secretarias)
+                    {
+                        <option value="@secretaria.Id">@secretaria.Nome</option>
+                    }
+                </InputSelect>
+            </div>
+            <div class="form-group col-md-6">
+                <lable for="text">Secretaria Destino</lable>
+                <InputSelect id="texto" class="form-control" @bind-Value="servidor.CargoId">
+                    @foreach (var cargo in cargos)
+                    {
+                        <option value="@cargo.Id">@cargo.Nome/@cargo.Hierarquia</option>
+                    }
+                </InputSelect>
+            </div>
+        </div>
+        <button type="submit" class="btn btn-success">Cadastrar</button>
+        <button type="reset" class="btn btn-outline-warning">Limpar</button>
+    </EditForm>
+}
+else
+{
+    <FrontEnd_GAMA.Components.SemAutorizacao>
+
+    </FrontEnd_GAMA.Components.SemAutorizacao>
+}
 
 
 @code {
+    private ServidorViewModel servidor = new ServidorViewModel();
+    private bool isAuth = false;
 
+    List<Secretaria> secretarias = new List<Secretaria>();
+    List<Cargo> cargos = new List<Cargo>();
+    private string Name { get; set; }
+    [CascadingParameter] public IModalService ModalService { get; set; }
+
+
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        var value = await local.GetItemAsync<string>("token");
+        TokenViewModel token = new TokenViewModel();
+        token.token = value;
+
+        if (!firstRender && !string.IsNullOrEmpty(value))
+            http.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", value);
+
+        if (firstRender) toast.ShowInfo("Autenticando");
+
+        var response = await http.PostAsJsonAsync<TokenViewModel>("login/auth", token);
+
+        if (response.StatusCode == System.Net.HttpStatusCode.OK)
+        {
+            if (firstRender) toast.ShowInfo("Autenticado");
+            Name = await response.Content.ReadAsStringAsync();
+            isAuth = true;
+        }
+        else isAuth = false;
+        if (isAuth)
+        {
+            if (firstRender) toast.ShowInfo("Listando Secretarias e Cargos disponíveis");
+            var secretariasResponse = await http.GetFromJsonAsync<IEnumerable<Secretaria>>("secretaria");
+            var cargosResponse = await http.GetFromJsonAsync<IEnumerable<Cargo>>("cargo");
+
+            if (secretariasResponse is not null)
+                secretarias = secretariasResponse.ToList();
+            if (cargosResponse is not null)
+                cargos = cargosResponse.ToList();
+        }
+        StateHasChanged();
+        await base.OnAfterRenderAsync(firstRender);
+    }
+
+    public void Reload()
+    {
+        navigation.NavigateTo("/adm/dash/add/Servidor", true);
+    }
+
+    public async Task EfetuarCadastro()
+    {
+        toast.ShowInfo("Enviando Requisição");
+        var response = await http.PostAsJsonAsync<ServidorViewModel>("servidor", servidor);
+
+        if (response.StatusCode == System.Net.HttpStatusCode.OK)
+        {
+            toast.ShowSuccess("Servidor Cadastrado");
+            Reload();
+        }
+        else
+        {
+            var modalScreen = ModalService.Show<FrontEnd_GAMA.Components.ErrorDialog>();
+            var result = await modalScreen.Result;
+            if (result is not null)
+            {
+                Reload();
+            }
+        }
+    }
 }

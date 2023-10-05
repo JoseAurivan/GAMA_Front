@@ -1,0 +1,63 @@
+﻿@using Core.Entities
+@inject HttpClient http;
+
+
+<EditForm Model="@endereco" OnSubmit="MudarEndereco">
+    <div class="form-row">
+        <div class="form-group col-md-6">
+            <label for="nome">ID:</label>
+            <InputNumber id="nome" class="form-control" disabled @bind-Value="endereco.Id"></InputNumber>
+        </div>
+    </div>
+    <div class="form-row">
+        <div class="form-group col-md-6">
+            <label for="nome">Bairro:</label>
+            <InputText id="nome" class="form-control" @bind-Value="endereco.Bairro"></InputText>
+        </div>
+        <div class="form-group col-md-6">
+            <label for="senha">Rua:</label>
+            <InputText type="text" class="form-control" id="senha" @bind-Value="endereco.Rua"></InputText>
+        </div>
+    </div>
+
+    <div class="form-row">
+        <div class="form-group col-md-6">
+            <label for="cpf">Logradouro:</label>
+            <InputText id="cpf" class="form-control" @bind-Value="endereco.Logradouro"></InputText>
+        </div>
+        <div class="form-group col-md-6">
+            <label for="pispasep">CEP:</label>
+            <InputText id="pispasep" class="form-control" @bind-Value="endereco.CEP"></InputText>
+        </div>
+    </div>
+        <button type="button" class="btn btn-danger" onclick="@(async () => MudarEndereco())">Mudar</button>
+        <button type="button" class="btn btn-primary" onclick="@(async () => FecharModal())">Fechar</button>
+</EditForm>
+
+
+@code {
+    [CascadingParameter] BlazoredModalInstance Modal { get; set; }
+    [Parameter] public int Id { get; set; }
+    [Parameter] public string Entity { get; set; }
+
+    public Endereco endereco = new Endereco();
+
+    protected override async Task OnInitializedAsync()
+    {
+        var response = await http.GetFromJsonAsync<Endereco>("endereco/" + Id);
+        if (response is not null) endereco = response;
+        await base.OnInitializedAsync();
+    }
+
+    public async Task MudarEndereco()
+    {
+        var response = await http.PutAsJsonAsync<Endereco>("endereco", endereco);
+        await Modal.CloseAsync();
+    }
+
+    public async Task FecharModal()
+    {
+        await Modal.CancelAsync();
+    }
+
+}

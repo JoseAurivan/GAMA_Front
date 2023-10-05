@@ -1,5 +1,13 @@
 ﻿@page "/painel/servidor"
-<h3>Painel do Servidor</h3>
+@inject ILocalStorageService local
+@inject HttpClient http
+@inject IToastService toast
+@using SuporteFront
+@if(isAuth)
+{
+    <FrontEnd_GAMA.Components.Logout UserName="@Matricula">
+
+    </FrontEnd_GAMA.Components.Logout>
 <div class="row">
     <div class="col-sm-6">
         <div class="card">
@@ -15,7 +23,7 @@
             <h5 class="card-header">Cadastre uma Cesta Básica para um Cidadao</h5>
             <div class="card-body">
                 <p class="card-text">Cadastre uma Cesta Básica para um cidadao</p>
-                <a href="/painel/servidor/cesta" class="btn btn-primary">Cadastrar</a>
+                    <button class="btn btn-outline-primary" disabled>Cadastrar</button>
             </div>
         </div>
     </div>
@@ -24,7 +32,7 @@
             <h5 class="card-header">Registre um cidadão</h5>
             <div class="card-body">
                 <p class="card-text">Realize um cadastro do cidadao no sistema.</p>
-                <a href="/cadastro/cidadao" class="btn btn-primary">Registrar</a>
+                <button  class="btn btn-outline-primary" disabled>Registrar</button>
             </div>
         </div>
     </div>
@@ -33,20 +41,58 @@
             <h5 class="card-header">Gerencie sua Secretaria</h5>
             <div class="card-body">
                 <p class="card-text">Gerenciar Secretaria atual</p>
-                <a href="#" class="btn btn-primary">Gerenciar</a>
+                <button  class="btn btn-outline-primary" disabled>Gerenciar</button>
             </div>
         </div>
     </div>
     <div class="col-sm-6">
         <div class="card">
-            <h5 class="card-header">Checar Solicitações</h5>
+            <h5 class="card-header">Checar Chamados</h5>
             <div class="card-body">
-                <p class="card-text">Cheque solicitações de sua secretaria</p>
+                <p class="card-text">Cheque chamados de sua secretaria</p>
                 <a href="/painel/servidor/solicitacoes" class="btn btn-primary">Checar</a>
             </div>
         </div>
     </div>
-</div>
+    </div>
+}
+else
+{
+    <FrontEnd_GAMA.Components.SemAutorizacao>
+
+    </FrontEnd_GAMA.Components.SemAutorizacao>
+}
 @code {
+    private bool isAuth = false;
+    private string Matricula { get; set; }
+
+
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        var value = await local.GetItemAsync<string>("token");
+        TokenViewModel token = new TokenViewModel();
+        token.token = value;
+
+        if (!firstRender && !string.IsNullOrEmpty(value))
+            http.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", value);
+        if(firstRender)
+            toast.ShowInfo("Autenticando");
+
+        var response = await http.PostAsJsonAsync<TokenViewModel>("login/auth", token);
+
+        if (response.StatusCode == System.Net.HttpStatusCode.OK)
+        {
+            if(firstRender)
+                toast.ShowSuccess("Autenticado");
+            Matricula = await response.Content.ReadAsStringAsync();
+            isAuth = true;
+        }
+        else
+        {
+            isAuth = false;
+        }
+        StateHasChanged();
+        await base.OnAfterRenderAsync(firstRender);
+    }
 
 }

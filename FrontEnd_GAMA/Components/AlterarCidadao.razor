@@ -1,0 +1,93 @@
+﻿@using Core.Entities;
+@inject HttpClient http;
+
+<div class="modal fade show" id="myModal" style="display:block; background-color: rgba(10,10,10,.8);" aria-modal="true" role="dialog">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Alterar cidadão</h5>
+            </div>
+            <div class="modal-body">
+                <EditForm Model="cidadao" OnSubmit="MudarCidadao">
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                            <label for="nome">ID:</label>
+                            <InputNumber id="nome" class="form-control" disabled @bind-Value="cidadao.Id"></InputNumber>
+                            
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                            <label for="nome">Nome:</label>
+                            <InputText id="nome" class="form-control" @bind-Value="cidadao.Nome"></InputText>
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label for="password">Senha:</label>
+                            <InputText id="senha" type="password" disabled class="form-control" @bind-Value="cidadao.Senha"></InputText>
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                            <label for="cpf">CPF:</label>
+                            <InputText id="cpf" class="form-control" @bind-Value="cidadao.CPF"></InputText>
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label for="pispasep">PIS/PASEP:</label>
+                            <InputText id="pispasep" class="form-control" @bind-Value="cidadao.PISPASEP"></InputText>
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                            <label for="telefone">Telefone:</label>
+                            <InputText id="telefone" class="form-control" @bind-Value="cidadao.Telefone"></InputText>
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label for="email">Email:</label>
+                            <InputText id="email" type="email" class="form-control" @bind-Value="cidadao.Email"></InputText>
+                        </div>
+                    </div>
+
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-danger" onclick="@(async () => MudarCidadao())">Mudar</button>
+                        <button type="button" class="btn btn-primary" onclick="@(async () => FecharModal())">Fechar</button>
+                    </div>
+
+                </EditForm>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+
+@code {
+    [CascadingParameter] BlazoredModalInstance Modal { get; set; }
+    [Parameter] public int Id { get; set; }
+    [Parameter] public string Entity { get; set; }
+
+    public Cidadao cidadao = new Cidadao();
+
+    protected override async Task OnInitializedAsync()
+    {
+        var response = await http.GetFromJsonAsync<Cidadao>("cidadao/" + Id);
+
+        if (response is not null) cidadao = response;
+
+        await base.OnInitializedAsync();
+    }
+
+    public async Task MudarCidadao()
+    {
+        var response = await http.PutAsJsonAsync<Cidadao>("cidadao/"+Id, cidadao);
+        await Modal.CloseAsync();
+    }
+
+    public async Task FecharModal()
+    {
+        await Modal.CancelAsync();
+    }
+
+
+}

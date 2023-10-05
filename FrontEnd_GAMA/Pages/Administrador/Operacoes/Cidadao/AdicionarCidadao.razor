@@ -1,12 +1,125 @@
 ﻿@page "/adm/dash/add/cidadao"
 @using FrontEnd_GAMA.Singleton;
 @using System.Reflection;
+@using Core.Entities
+@using System.Text.Json.Nodes;
+@using System.Text.Json;
+@using FrontEnd_GAMA.Components;
+@using SuporteFront;
 @inject NavigationManager navigation
 @inject AdmOperationEntity ops
+@inject ILocalStorageService local
+@inject HttpClient http
+@inject IToastService toast
+
+@if (isAuth)
+{
+    <Logout UserName="@Name">
+
+    </Logout>
+    <FrontEnd_GAMA.Components.Component>
+
+    </FrontEnd_GAMA.Components.Component>
 <h3>Adicionar @ops.Entity</h3>
 
+    <EditForm Model="@cidadaoEnderecoViewModel" OnSubmit="EfetuarCadastro">
+        <div class="form-row">
+            <div class="form-group col-md-6">
+                <label for="nome">Nome:</label>
+                <InputText id="nome" class="form-control" @bind-Value="cidadaoEnderecoViewModel.Cidadao.Nome"></InputText>
+            </div>
+            <div class="form-group col-md-6">
+                <label for="senha">Senha:</label>
+                <InputText type="password" class="form-control" id="senha" @bind-Value="cidadaoEnderecoViewModel.Cidadao.Senha"></InputText>
+            </div>
+        </div>
 
+        <div class="form-row">
+            <div class="form-group col-md-6">
+                <label for="cpf">CPF:</label>
+                <InputText id="cpf" class="form-control" @bind-Value="cidadaoEnderecoViewModel.Cidadao.CPF"></InputText>
+            </div>
+            <div class="form-group col-md-6">
+                <label for="pispasep">PIS/PASEP:</label>
+                <InputText id="pispasep" class="form-control" @bind-Value="cidadaoEnderecoViewModel.Cidadao.PISPASEP"></InputText>
+            </div>
+        </div>
+
+        <div class="form-row">
+            <div class="form-group col-md-6">
+                <label for="telefone">Telefone:</label>
+                <InputText id="telefone" class="form-control" @bind-Value="cidadaoEnderecoViewModel.Cidadao.Telefone"></InputText>
+            </div>
+            <div class="form-group col-md-6">
+                <label for="email">Email:</label>
+                <InputText id="email" type="email" class="form-control" @bind-Value="cidadaoEnderecoViewModel.Cidadao.Email"></InputText>
+            </div>
+        </div>
+
+        <EnderecoForm endereco="@cidadaoEnderecoViewModel.Endereco">
+
+        </EnderecoForm>
+
+        <button type="submit" class="btn btn-success">Cadastrar</button>
+        <button type="reset" class="btn btn-outline-warning">Limpar</button>
+    </EditForm>
+
+}
+else
+{
+    <SemAutorizacao>
+
+    </SemAutorizacao>
+}
 
 @code {
+    public CidadaoEnderecoViewModel cidadaoEnderecoViewModel = new CidadaoEnderecoViewModel();
+    private bool isAuth = false;
+    private string Name { get; set; }
+    [CascadingParameter] public IModalService ModalService { get; set; }
 
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        var value = await local.GetItemAsync<string>("token");
+        TokenViewModel token = new TokenViewModel();
+        token.token = value;
+
+        if (!firstRender && !string.IsNullOrEmpty(value))
+            http.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", value);
+
+        if (firstRender) toast.ShowInfo("Autenticando");
+
+        var response = await http.PostAsJsonAsync<TokenViewModel>("login/auth", token);
+
+        if (response.StatusCode == System.Net.HttpStatusCode.OK)
+        {
+            if (firstRender) toast.ShowInfo("Autenticado");
+            Name = await response.Content.ReadAsStringAsync();
+            isAuth = true;
+        }
+        else isAuth = false;
+
+        StateHasChanged();
+        await base.OnAfterRenderAsync(firstRender);
+    }
+
+    public async Task EfetuarCadastro()
+    {
+        toast.ShowInfo("EnviandoRequisição");
+        var response = await http.PostAsJsonAsync<CidadaoEnderecoViewModel>("cidadao", cidadaoEnderecoViewModel);
+        if(response.IsSuccessStatusCode)
+        {
+            toast.ShowSuccess("Cidadão cadastrado com sucesso");
+            navigation.NavigateTo("/adm/dash/add/cidadao", true);
+        }
+        else
+        {
+            var modal = ModalService.Show<FrontEnd_GAMA.Components.ErrorDialog>();
+            var result = await modal.Result;
+            if(result is not null)
+            {
+                navigation.NavigateTo("/adm/dash/add/cidadao", true);
+            }
+        }
+    }
 }

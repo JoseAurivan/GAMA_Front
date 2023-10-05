@@ -1,10 +1,12 @@
 global using Microsoft.AspNetCore.Components.Authorization;
+global using Blazored.LocalStorage;
 using FrontEnd_GAMA;
 using FrontEnd_GAMA.Data;
 using FrontEnd_GAMA.Singleton;
 using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Components.Web;
-
+using Blazored.Modal;
+using Blazored.Toast;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -12,11 +14,14 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddRazorPages();
 builder.Services.AddServerSideBlazor();
 builder.Services.AddScoped<HttpClient>(sp => new HttpClient {BaseAddress = new Uri("http://localhost:5042/api/") });
-
+builder.Services.AddBlazoredModal();
 builder.Services.AddSingleton<AdmOperationEntity>();
 builder.Services.AddSingleton<WeatherForecastService>();
 builder.Services.AddScoped<AuthenticationStateProvider, AuthProvider>();
+builder.Services.AddBlazoredLocalStorage();
 builder.Services.AddAuthenticationCore();
+builder.Services.AddBlazoredToast();
+
 
 var app = builder.Build();
 

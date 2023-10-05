@@ -1,41 +1,99 @@
 ﻿@page "/painel/cidadao/listartelefone"
 @inject HttpClient http
+@inject NavigationManager navigation
+@inject ILocalStorageService local
+@inject IToastService toast
+@using SuporteFront;
 @using Core.Entities
 @using System.Text.Json;
 
-<h3>Telefones Uteis</h3>
+@if (isAuth)
+{
+    <FrontEnd_GAMA.Components.Logout UserName="@cpf">
 
-<table class="table table-dark">
-    <thead>
-        <tr>
-            <th scope="col">Secretaria</th>
-            <th scope="col">Telefone</th>
-        </tr>
-    </thead>
-   <tbody>
-       <tr>
-           @if(secretarias.Count ==0)
-            {
-                <FrontEnd_GAMA.Components.Loading>
+    </FrontEnd_GAMA.Components.Logout>
+    <h3>Telefones Uteis</h3>
 
-                </FrontEnd_GAMA.Components.Loading>
-            }
-        </tr>
-   </tbody>
+    <table class="table table-dark">
+        <thead>
+            <tr>
+                <th scope="col">Secretaria</th>
+                <th scope="col">Telefone</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                @if (secretarias.Count == 0)
+                {
+                    <FrontEnd_GAMA.Components.Loading>
 
-</table>
+                    </FrontEnd_GAMA.Components.Loading>
+                }
+                else
+                {
+                    @foreach (var secretaria in secretarias)
+                    {
+                        <td>@secretaria.Nome</td>
+                        <td>@secretaria.Telefone</td>
+                    }
+                }
+            </tr>
+        </tbody>
 
-<a href="/painel/cidadao"> Voltar </a>
+    </table>
+
+    <a href="/painel/cidadao"> Voltar </a>
+}
+else
+{
+    <FrontEnd_GAMA.Components.SemAutorizacao>
+
+    </FrontEnd_GAMA.Components.SemAutorizacao>
+}
 
 @code {
     public List<Secretaria> secretarias = new List<Secretaria>();
+    private bool isAuth = false;
+    private string cpf { get; set; }
 
-    protected override async Task OnInitializedAsync()
+    protected override async Task OnAfterRenderAsync(bool firstRender)
     {
-        var response = await http.GetFromJsonAsync<IEnumerable<Secretaria>>("secretaria");
-        if(response is not null)
-            secretarias = response.ToList();
+        var value = await local.GetItemAsync<string>("token");
+        TokenViewModel token = new TokenViewModel();
+        token.token = value;
 
-        await base.OnInitializedAsync();
+        if (!firstRender && !string.IsNullOrEmpty(value))
+            http.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", value);
+
+        if (firstRender) toast.ShowInfo("Autenticando");
+
+        var response = await http.PostAsJsonAsync<TokenViewModel>("login/auth", token);
+
+        if (response.StatusCode == System.Net.HttpStatusCode.OK)
+        {
+            if (firstRender) toast.ShowSuccess("Autenticado");
+            cpf = await response.Content.ReadAsStringAsync();
+            isAuth = true;
+        }
+        else isAuth = false;
+
+        if (isAuth)
+        {
+            try{
+                if (firstRender) toast.ShowInfo("Obtendo Secretarias");
+                var sec = await http.GetFromJsonAsync<IEnumerable<Secretaria>>("secretaria");
+                if (sec is not null)
+                    secretarias = sec.ToList();
+            }catch(Exception ex)
+            {
+                toast.ShowError("Algo deu errado, contate o suporte");
+                navigation.NavigateTo("/", true);
+            }
+        }
+
+        if (secretarias.Count == 0) if(firstRender) toast.ShowInfo("Sem secretarias para mostrar");
+
+        StateHasChanged();
+        await base.OnAfterRenderAsync(firstRender);
     }
 }

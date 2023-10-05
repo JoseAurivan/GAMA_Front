@@ -9,197 +9,237 @@ build_property.EnforceExtendedAnalyzerRules =
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = FrontEnd_GAMA
 build_property.RootNamespace = FrontEnd_GAMA
-build_property.ProjectDir = C:\Users\auriv\OneDrive\Área de Trabalho\Pós Graduaçao\ProjetoIntegrador\FrontEnd_GAMA\FrontEnd_GAMA\
+build_property.ProjectDir = C:\Users\auriv\OneDrive\Área de Trabalho\BACKUP_NOVO\Pós Graduaçao\ProjetoIntegrador\FrontEnd_GAMA\FrontEnd_GAMA\
 build_property.RazorLangVersion = 6.0
 build_property.SupportLocalizedComponentNames = 
 build_property.GenerateRazorMetadataSourceChecksumAttributes = 
-build_property.MSBuildProjectDirectory = C:\Users\auriv\OneDrive\Área de Trabalho\Pós Graduaçao\ProjetoIntegrador\FrontEnd_GAMA\FrontEnd_GAMA
+build_property.MSBuildProjectDirectory = C:\Users\auriv\OneDrive\Área de Trabalho\BACKUP_NOVO\Pós Graduaçao\ProjetoIntegrador\FrontEnd_GAMA\FrontEnd_GAMA
 build_property._RazorSourceGeneratorDebug = 
 
-[C:/Users/auriv/OneDrive/Área de Trabalho/Pós Graduaçao/ProjetoIntegrador/FrontEnd_GAMA/FrontEnd_GAMA/App.razor]
+[C:/Users/auriv/OneDrive/Área de Trabalho/BACKUP_NOVO/Pós Graduaçao/ProjetoIntegrador/FrontEnd_GAMA/FrontEnd_GAMA/App.razor]
 build_metadata.AdditionalFiles.TargetPath = QXBwLnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/auriv/OneDrive/Área de Trabalho/Pós Graduaçao/ProjetoIntegrador/FrontEnd_GAMA/FrontEnd_GAMA/Components/EnderecoForm.razor]
+[C:/Users/auriv/OneDrive/Área de Trabalho/BACKUP_NOVO/Pós Graduaçao/ProjetoIntegrador/FrontEnd_GAMA/FrontEnd_GAMA/Components/AlterarCidadao.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xBbHRlcmFyQ2lkYWRhby5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/auriv/OneDrive/Área de Trabalho/BACKUP_NOVO/Pós Graduaçao/ProjetoIntegrador/FrontEnd_GAMA/FrontEnd_GAMA/Components/AlterarEndereco.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xBbHRlcmFyRW5kZXJlY28ucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/auriv/OneDrive/Área de Trabalho/BACKUP_NOVO/Pós Graduaçao/ProjetoIntegrador/FrontEnd_GAMA/FrontEnd_GAMA/Components/AlterarServidor.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xBbHRlcmFyU2Vydmlkb3IucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/auriv/OneDrive/Área de Trabalho/BACKUP_NOVO/Pós Graduaçao/ProjetoIntegrador/FrontEnd_GAMA/FrontEnd_GAMA/Components/Component.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xDb21wb25lbnQucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/auriv/OneDrive/Área de Trabalho/BACKUP_NOVO/Pós Graduaçao/ProjetoIntegrador/FrontEnd_GAMA/FrontEnd_GAMA/Components/DeleteConfirm.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xEZWxldGVDb25maXJtLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/auriv/OneDrive/Área de Trabalho/BACKUP_NOVO/Pós Graduaçao/ProjetoIntegrador/FrontEnd_GAMA/FrontEnd_GAMA/Components/EnderecoForm.razor]
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xFbmRlcmVjb0Zvcm0ucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/auriv/OneDrive/Área de Trabalho/Pós Graduaçao/ProjetoIntegrador/FrontEnd_GAMA/FrontEnd_GAMA/Components/ErrorDialog.razor]
+[C:/Users/auriv/OneDrive/Área de Trabalho/BACKUP_NOVO/Pós Graduaçao/ProjetoIntegrador/FrontEnd_GAMA/FrontEnd_GAMA/Components/ErrorDialog.razor]
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xFcnJvckRpYWxvZy5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/auriv/OneDrive/Área de Trabalho/Pós Graduaçao/ProjetoIntegrador/FrontEnd_GAMA/FrontEnd_GAMA/Components/Loading.razor]
+[C:/Users/auriv/OneDrive/Área de Trabalho/BACKUP_NOVO/Pós Graduaçao/ProjetoIntegrador/FrontEnd_GAMA/FrontEnd_GAMA/Components/Loading.razor]
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xMb2FkaW5nLnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/auriv/OneDrive/Área de Trabalho/Pós Graduaçao/ProjetoIntegrador/FrontEnd_GAMA/FrontEnd_GAMA/Pages/Administrador/DashboardADM.razor]
+[C:/Users/auriv/OneDrive/Área de Trabalho/BACKUP_NOVO/Pós Graduaçao/ProjetoIntegrador/FrontEnd_GAMA/FrontEnd_GAMA/Components/Logout.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xMb2dvdXQucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/auriv/OneDrive/Área de Trabalho/BACKUP_NOVO/Pós Graduaçao/ProjetoIntegrador/FrontEnd_GAMA/FrontEnd_GAMA/Components/SecretariaForm.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xTZWNyZXRhcmlhRm9ybS5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/auriv/OneDrive/Área de Trabalho/BACKUP_NOVO/Pós Graduaçao/ProjetoIntegrador/FrontEnd_GAMA/FrontEnd_GAMA/Components/SemAutorizacao.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xTZW1BdXRvcml6YWNhby5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/auriv/OneDrive/Área de Trabalho/BACKUP_NOVO/Pós Graduaçao/ProjetoIntegrador/FrontEnd_GAMA/FrontEnd_GAMA/Pages/Administrador/DashboardADM.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQWRtaW5pc3RyYWRvclxEYXNoYm9hcmRBRE0ucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/auriv/OneDrive/Área de Trabalho/Pós Graduaçao/ProjetoIntegrador/FrontEnd_GAMA/FrontEnd_GAMA/Pages/Administrador/LoginAdm.razor]
+[C:/Users/auriv/OneDrive/Área de Trabalho/BACKUP_NOVO/Pós Graduaçao/ProjetoIntegrador/FrontEnd_GAMA/FrontEnd_GAMA/Pages/Administrador/LoginAdm.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQWRtaW5pc3RyYWRvclxMb2dpbkFkbS5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/auriv/OneDrive/Área de Trabalho/Pós Graduaçao/ProjetoIntegrador/FrontEnd_GAMA/FrontEnd_GAMA/Pages/Administrador/Operacoes/Cargo/AdicionarCargo.razor]
+[C:/Users/auriv/OneDrive/Área de Trabalho/BACKUP_NOVO/Pós Graduaçao/ProjetoIntegrador/FrontEnd_GAMA/FrontEnd_GAMA/Pages/Administrador/Operacoes/Cargo/AdicionarCargo.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQWRtaW5pc3RyYWRvclxPcGVyYWNvZXNcQ2FyZ29cQWRpY2lvbmFyQ2FyZ28ucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/auriv/OneDrive/Área de Trabalho/Pós Graduaçao/ProjetoIntegrador/FrontEnd_GAMA/FrontEnd_GAMA/Pages/Administrador/Operacoes/Cargo/ListarCargo.razor]
+[C:/Users/auriv/OneDrive/Área de Trabalho/BACKUP_NOVO/Pós Graduaçao/ProjetoIntegrador/FrontEnd_GAMA/FrontEnd_GAMA/Pages/Administrador/Operacoes/Cargo/ListarCargo.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQWRtaW5pc3RyYWRvclxPcGVyYWNvZXNcQ2FyZ29cTGlzdGFyQ2FyZ28ucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/auriv/OneDrive/Área de Trabalho/Pós Graduaçao/ProjetoIntegrador/FrontEnd_GAMA/FrontEnd_GAMA/Pages/Administrador/Operacoes/CestaBasica/AdicionarCesta.razor]
+[C:/Users/auriv/OneDrive/Área de Trabalho/BACKUP_NOVO/Pós Graduaçao/ProjetoIntegrador/FrontEnd_GAMA/FrontEnd_GAMA/Pages/Administrador/Operacoes/CestaBasica/AdicionarCesta.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQWRtaW5pc3RyYWRvclxPcGVyYWNvZXNcQ2VzdGFCYXNpY2FcQWRpY2lvbmFyQ2VzdGEucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/auriv/OneDrive/Área de Trabalho/Pós Graduaçao/ProjetoIntegrador/FrontEnd_GAMA/FrontEnd_GAMA/Pages/Administrador/Operacoes/CestaBasica/ListarCesta.razor]
+[C:/Users/auriv/OneDrive/Área de Trabalho/BACKUP_NOVO/Pós Graduaçao/ProjetoIntegrador/FrontEnd_GAMA/FrontEnd_GAMA/Pages/Administrador/Operacoes/CestaBasica/ListarCesta.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQWRtaW5pc3RyYWRvclxPcGVyYWNvZXNcQ2VzdGFCYXNpY2FcTGlzdGFyQ2VzdGEucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/auriv/OneDrive/Área de Trabalho/Pós Graduaçao/ProjetoIntegrador/FrontEnd_GAMA/FrontEnd_GAMA/Pages/Administrador/Operacoes/Chamado/AdicionarChamado.razor]
+[C:/Users/auriv/OneDrive/Área de Trabalho/BACKUP_NOVO/Pós Graduaçao/ProjetoIntegrador/FrontEnd_GAMA/FrontEnd_GAMA/Pages/Administrador/Operacoes/Chamado/AdicionarChamado.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQWRtaW5pc3RyYWRvclxPcGVyYWNvZXNcQ2hhbWFkb1xBZGljaW9uYXJDaGFtYWRvLnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/auriv/OneDrive/Área de Trabalho/Pós Graduaçao/ProjetoIntegrador/FrontEnd_GAMA/FrontEnd_GAMA/Pages/Administrador/Operacoes/Chamado/ListarChamado.razor]
+[C:/Users/auriv/OneDrive/Área de Trabalho/BACKUP_NOVO/Pós Graduaçao/ProjetoIntegrador/FrontEnd_GAMA/FrontEnd_GAMA/Pages/Administrador/Operacoes/Chamado/ListarChamado.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQWRtaW5pc3RyYWRvclxPcGVyYWNvZXNcQ2hhbWFkb1xMaXN0YXJDaGFtYWRvLnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/auriv/OneDrive/Área de Trabalho/Pós Graduaçao/ProjetoIntegrador/FrontEnd_GAMA/FrontEnd_GAMA/Pages/Administrador/Operacoes/Cidadao/AdicionarCidadao.razor]
+[C:/Users/auriv/OneDrive/Área de Trabalho/BACKUP_NOVO/Pós Graduaçao/ProjetoIntegrador/FrontEnd_GAMA/FrontEnd_GAMA/Pages/Administrador/Operacoes/Cidadao/AdicionarCidadao.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQWRtaW5pc3RyYWRvclxPcGVyYWNvZXNcQ2lkYWRhb1xBZGljaW9uYXJDaWRhZGFvLnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/auriv/OneDrive/Área de Trabalho/Pós Graduaçao/ProjetoIntegrador/FrontEnd_GAMA/FrontEnd_GAMA/Pages/Administrador/Operacoes/Cidadao/ListarCidadao.razor]
+[C:/Users/auriv/OneDrive/Área de Trabalho/BACKUP_NOVO/Pós Graduaçao/ProjetoIntegrador/FrontEnd_GAMA/FrontEnd_GAMA/Pages/Administrador/Operacoes/Cidadao/ListarCidadao.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQWRtaW5pc3RyYWRvclxPcGVyYWNvZXNcQ2lkYWRhb1xMaXN0YXJDaWRhZGFvLnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/auriv/OneDrive/Área de Trabalho/Pós Graduaçao/ProjetoIntegrador/FrontEnd_GAMA/FrontEnd_GAMA/Pages/Administrador/Operacoes/Endereco/AdicionarEndereco.razor]
+[C:/Users/auriv/OneDrive/Área de Trabalho/BACKUP_NOVO/Pós Graduaçao/ProjetoIntegrador/FrontEnd_GAMA/FrontEnd_GAMA/Pages/Administrador/Operacoes/Endereco/AdicionarEndereco.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQWRtaW5pc3RyYWRvclxPcGVyYWNvZXNcRW5kZXJlY29cQWRpY2lvbmFyRW5kZXJlY28ucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/auriv/OneDrive/Área de Trabalho/Pós Graduaçao/ProjetoIntegrador/FrontEnd_GAMA/FrontEnd_GAMA/Pages/Administrador/Operacoes/Endereco/ListarEndereco.razor]
+[C:/Users/auriv/OneDrive/Área de Trabalho/BACKUP_NOVO/Pós Graduaçao/ProjetoIntegrador/FrontEnd_GAMA/FrontEnd_GAMA/Pages/Administrador/Operacoes/Endereco/ListarEndereco.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQWRtaW5pc3RyYWRvclxPcGVyYWNvZXNcRW5kZXJlY29cTGlzdGFyRW5kZXJlY28ucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/auriv/OneDrive/Área de Trabalho/Pós Graduaçao/ProjetoIntegrador/FrontEnd_GAMA/FrontEnd_GAMA/Pages/Administrador/Operacoes/Familia/AdicionarFamilia.razor]
+[C:/Users/auriv/OneDrive/Área de Trabalho/BACKUP_NOVO/Pós Graduaçao/ProjetoIntegrador/FrontEnd_GAMA/FrontEnd_GAMA/Pages/Administrador/Operacoes/Familia/AdicionarFamilia.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQWRtaW5pc3RyYWRvclxPcGVyYWNvZXNcRmFtaWxpYVxBZGljaW9uYXJGYW1pbGlhLnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/auriv/OneDrive/Área de Trabalho/Pós Graduaçao/ProjetoIntegrador/FrontEnd_GAMA/FrontEnd_GAMA/Pages/Administrador/Operacoes/Familia/ListarFamilia.razor]
+[C:/Users/auriv/OneDrive/Área de Trabalho/BACKUP_NOVO/Pós Graduaçao/ProjetoIntegrador/FrontEnd_GAMA/FrontEnd_GAMA/Pages/Administrador/Operacoes/Familia/ListarFamilia.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQWRtaW5pc3RyYWRvclxPcGVyYWNvZXNcRmFtaWxpYVxMaXN0YXJGYW1pbGlhLnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/auriv/OneDrive/Área de Trabalho/Pós Graduaçao/ProjetoIntegrador/FrontEnd_GAMA/FrontEnd_GAMA/Pages/Administrador/Operacoes/Reclamacao/AdicionarReclamacao.razor]
+[C:/Users/auriv/OneDrive/Área de Trabalho/BACKUP_NOVO/Pós Graduaçao/ProjetoIntegrador/FrontEnd_GAMA/FrontEnd_GAMA/Pages/Administrador/Operacoes/Reclamacao/AdicionarReclamacao.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQWRtaW5pc3RyYWRvclxPcGVyYWNvZXNcUmVjbGFtYWNhb1xBZGljaW9uYXJSZWNsYW1hY2FvLnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/auriv/OneDrive/Área de Trabalho/Pós Graduaçao/ProjetoIntegrador/FrontEnd_GAMA/FrontEnd_GAMA/Pages/Administrador/Operacoes/Reclamacao/ListarReclamacao.razor]
+[C:/Users/auriv/OneDrive/Área de Trabalho/BACKUP_NOVO/Pós Graduaçao/ProjetoIntegrador/FrontEnd_GAMA/FrontEnd_GAMA/Pages/Administrador/Operacoes/Reclamacao/ListarReclamacao.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQWRtaW5pc3RyYWRvclxPcGVyYWNvZXNcUmVjbGFtYWNhb1xMaXN0YXJSZWNsYW1hY2FvLnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/auriv/OneDrive/Área de Trabalho/Pós Graduaçao/ProjetoIntegrador/FrontEnd_GAMA/FrontEnd_GAMA/Pages/Administrador/Operacoes/Secretaria/AdicionarSecretaria.razor]
+[C:/Users/auriv/OneDrive/Área de Trabalho/BACKUP_NOVO/Pós Graduaçao/ProjetoIntegrador/FrontEnd_GAMA/FrontEnd_GAMA/Pages/Administrador/Operacoes/Secretaria/AdicionarSecretaria.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQWRtaW5pc3RyYWRvclxPcGVyYWNvZXNcU2VjcmV0YXJpYVxBZGljaW9uYXJTZWNyZXRhcmlhLnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/auriv/OneDrive/Área de Trabalho/Pós Graduaçao/ProjetoIntegrador/FrontEnd_GAMA/FrontEnd_GAMA/Pages/Administrador/Operacoes/Secretaria/ListarSecretaria.razor]
+[C:/Users/auriv/OneDrive/Área de Trabalho/BACKUP_NOVO/Pós Graduaçao/ProjetoIntegrador/FrontEnd_GAMA/FrontEnd_GAMA/Pages/Administrador/Operacoes/Secretaria/ListarSecretaria.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQWRtaW5pc3RyYWRvclxPcGVyYWNvZXNcU2VjcmV0YXJpYVxMaXN0YXJTZWNyZXRhcmlhLnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/auriv/OneDrive/Área de Trabalho/Pós Graduaçao/ProjetoIntegrador/FrontEnd_GAMA/FrontEnd_GAMA/Pages/Administrador/Operacoes/Servidor/AdicionarServidor.razor]
+[C:/Users/auriv/OneDrive/Área de Trabalho/BACKUP_NOVO/Pós Graduaçao/ProjetoIntegrador/FrontEnd_GAMA/FrontEnd_GAMA/Pages/Administrador/Operacoes/Servidor/AdicionarServidor.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQWRtaW5pc3RyYWRvclxPcGVyYWNvZXNcU2Vydmlkb3JcQWRpY2lvbmFyU2Vydmlkb3IucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/auriv/OneDrive/Área de Trabalho/Pós Graduaçao/ProjetoIntegrador/FrontEnd_GAMA/FrontEnd_GAMA/Pages/Administrador/Operacoes/Servidor/ListarServidor.razor]
+[C:/Users/auriv/OneDrive/Área de Trabalho/BACKUP_NOVO/Pós Graduaçao/ProjetoIntegrador/FrontEnd_GAMA/FrontEnd_GAMA/Pages/Administrador/Operacoes/Servidor/ListarServidor.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQWRtaW5pc3RyYWRvclxPcGVyYWNvZXNcU2Vydmlkb3JcTGlzdGFyU2Vydmlkb3IucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/auriv/OneDrive/Área de Trabalho/Pós Graduaçao/ProjetoIntegrador/FrontEnd_GAMA/FrontEnd_GAMA/Pages/Cidadao/CadastroCidadao.razor]
+[C:/Users/auriv/OneDrive/Área de Trabalho/BACKUP_NOVO/Pós Graduaçao/ProjetoIntegrador/FrontEnd_GAMA/FrontEnd_GAMA/Pages/Cidadao/CadastroCidadao.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ2lkYWRhb1xDYWRhc3Ryb0NpZGFkYW8ucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/auriv/OneDrive/Área de Trabalho/Pós Graduaçao/ProjetoIntegrador/FrontEnd_GAMA/FrontEnd_GAMA/Pages/Cidadao/CriarCestaBasica.razor]
+[C:/Users/auriv/OneDrive/Área de Trabalho/BACKUP_NOVO/Pós Graduaçao/ProjetoIntegrador/FrontEnd_GAMA/FrontEnd_GAMA/Pages/Cidadao/CidadaoCadastroComponent.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ2lkYWRhb1xDaWRhZGFvQ2FkYXN0cm9Db21wb25lbnQucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/auriv/OneDrive/Área de Trabalho/BACKUP_NOVO/Pós Graduaçao/ProjetoIntegrador/FrontEnd_GAMA/FrontEnd_GAMA/Pages/Cidadao/CriarCestaBasica.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ2lkYWRhb1xDcmlhckNlc3RhQmFzaWNhLnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/auriv/OneDrive/Área de Trabalho/Pós Graduaçao/ProjetoIntegrador/FrontEnd_GAMA/FrontEnd_GAMA/Pages/Cidadao/CriarReclamacao.razor]
+[C:/Users/auriv/OneDrive/Área de Trabalho/BACKUP_NOVO/Pós Graduaçao/ProjetoIntegrador/FrontEnd_GAMA/FrontEnd_GAMA/Pages/Cidadao/CriarReclamacao.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ2lkYWRhb1xDcmlhclJlY2xhbWFjYW8ucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/auriv/OneDrive/Área de Trabalho/Pós Graduaçao/ProjetoIntegrador/FrontEnd_GAMA/FrontEnd_GAMA/Pages/Cidadao/ListarTelefones.razor]
+[C:/Users/auriv/OneDrive/Área de Trabalho/BACKUP_NOVO/Pós Graduaçao/ProjetoIntegrador/FrontEnd_GAMA/FrontEnd_GAMA/Pages/Cidadao/ListarTelefones.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ2lkYWRhb1xMaXN0YXJUZWxlZm9uZXMucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/auriv/OneDrive/Área de Trabalho/Pós Graduaçao/ProjetoIntegrador/FrontEnd_GAMA/FrontEnd_GAMA/Pages/Cidadao/Login.razor]
+[C:/Users/auriv/OneDrive/Área de Trabalho/BACKUP_NOVO/Pós Graduaçao/ProjetoIntegrador/FrontEnd_GAMA/FrontEnd_GAMA/Pages/Cidadao/Login.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ2lkYWRhb1xMb2dpbi5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/auriv/OneDrive/Área de Trabalho/Pós Graduaçao/ProjetoIntegrador/FrontEnd_GAMA/FrontEnd_GAMA/Pages/Cidadao/PainelCidadao.razor]
+[C:/Users/auriv/OneDrive/Área de Trabalho/BACKUP_NOVO/Pós Graduaçao/ProjetoIntegrador/FrontEnd_GAMA/FrontEnd_GAMA/Pages/Cidadao/PainelCidadao.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ2lkYWRhb1xQYWluZWxDaWRhZGFvLnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/auriv/OneDrive/Área de Trabalho/Pós Graduaçao/ProjetoIntegrador/FrontEnd_GAMA/FrontEnd_GAMA/Pages/Counter.razor]
+[C:/Users/auriv/OneDrive/Área de Trabalho/BACKUP_NOVO/Pós Graduaçao/ProjetoIntegrador/FrontEnd_GAMA/FrontEnd_GAMA/Pages/Counter.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ291bnRlci5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/auriv/OneDrive/Área de Trabalho/Pós Graduaçao/ProjetoIntegrador/FrontEnd_GAMA/FrontEnd_GAMA/Pages/FAQ.razor]
+[C:/Users/auriv/OneDrive/Área de Trabalho/BACKUP_NOVO/Pós Graduaçao/ProjetoIntegrador/FrontEnd_GAMA/FrontEnd_GAMA/Pages/FAQ.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRkFRLnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/auriv/OneDrive/Área de Trabalho/Pós Graduaçao/ProjetoIntegrador/FrontEnd_GAMA/FrontEnd_GAMA/Pages/FetchData.razor]
+[C:/Users/auriv/OneDrive/Área de Trabalho/BACKUP_NOVO/Pós Graduaçao/ProjetoIntegrador/FrontEnd_GAMA/FrontEnd_GAMA/Pages/FetchData.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRmV0Y2hEYXRhLnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/auriv/OneDrive/Área de Trabalho/Pós Graduaçao/ProjetoIntegrador/FrontEnd_GAMA/FrontEnd_GAMA/Pages/Index.razor]
+[C:/Users/auriv/OneDrive/Área de Trabalho/BACKUP_NOVO/Pós Graduaçao/ProjetoIntegrador/FrontEnd_GAMA/FrontEnd_GAMA/Pages/Index.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcSW5kZXgucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/auriv/OneDrive/Área de Trabalho/Pós Graduaçao/ProjetoIntegrador/FrontEnd_GAMA/FrontEnd_GAMA/Pages/Servidor/AbrirChamado.razor]
+[C:/Users/auriv/OneDrive/Área de Trabalho/BACKUP_NOVO/Pós Graduaçao/ProjetoIntegrador/FrontEnd_GAMA/FrontEnd_GAMA/Pages/Servidor/AbrirChamado.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcU2Vydmlkb3JcQWJyaXJDaGFtYWRvLnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/auriv/OneDrive/Área de Trabalho/Pós Graduaçao/ProjetoIntegrador/FrontEnd_GAMA/FrontEnd_GAMA/Pages/Servidor/CadastroServidor.razor]
+[C:/Users/auriv/OneDrive/Área de Trabalho/BACKUP_NOVO/Pós Graduaçao/ProjetoIntegrador/FrontEnd_GAMA/FrontEnd_GAMA/Pages/Servidor/CadastroServidor.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcU2Vydmlkb3JcQ2FkYXN0cm9TZXJ2aWRvci5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/auriv/OneDrive/Área de Trabalho/Pós Graduaçao/ProjetoIntegrador/FrontEnd_GAMA/FrontEnd_GAMA/Pages/Servidor/CriarCestaBasicaServidor.razor]
+[C:/Users/auriv/OneDrive/Área de Trabalho/BACKUP_NOVO/Pós Graduaçao/ProjetoIntegrador/FrontEnd_GAMA/FrontEnd_GAMA/Pages/Servidor/CadastroServidorComponent.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcU2Vydmlkb3JcQ2FkYXN0cm9TZXJ2aWRvckNvbXBvbmVudC5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/auriv/OneDrive/Área de Trabalho/BACKUP_NOVO/Pós Graduaçao/ProjetoIntegrador/FrontEnd_GAMA/FrontEnd_GAMA/Pages/Servidor/CriarCestaBasicaServidor.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcU2Vydmlkb3JcQ3JpYXJDZXN0YUJhc2ljYVNlcnZpZG9yLnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/auriv/OneDrive/Área de Trabalho/Pós Graduaçao/ProjetoIntegrador/FrontEnd_GAMA/FrontEnd_GAMA/Pages/Servidor/ListarSolicitacoes.razor]
+[C:/Users/auriv/OneDrive/Área de Trabalho/BACKUP_NOVO/Pós Graduaçao/ProjetoIntegrador/FrontEnd_GAMA/FrontEnd_GAMA/Pages/Servidor/ListarSolicitacoes.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcU2Vydmlkb3JcTGlzdGFyU29saWNpdGFjb2VzLnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/auriv/OneDrive/Área de Trabalho/Pós Graduaçao/ProjetoIntegrador/FrontEnd_GAMA/FrontEnd_GAMA/Pages/Servidor/LoginServidor.razor]
+[C:/Users/auriv/OneDrive/Área de Trabalho/BACKUP_NOVO/Pós Graduaçao/ProjetoIntegrador/FrontEnd_GAMA/FrontEnd_GAMA/Pages/Servidor/LoginServidor.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcU2Vydmlkb3JcTG9naW5TZXJ2aWRvci5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/auriv/OneDrive/Área de Trabalho/Pós Graduaçao/ProjetoIntegrador/FrontEnd_GAMA/FrontEnd_GAMA/Pages/Servidor/PainelServidor.razor]
+[C:/Users/auriv/OneDrive/Área de Trabalho/BACKUP_NOVO/Pós Graduaçao/ProjetoIntegrador/FrontEnd_GAMA/FrontEnd_GAMA/Pages/Servidor/PainelServidor.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcU2Vydmlkb3JcUGFpbmVsU2Vydmlkb3IucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/auriv/OneDrive/Área de Trabalho/Pós Graduaçao/ProjetoIntegrador/FrontEnd_GAMA/FrontEnd_GAMA/Shared/SurveyPrompt.razor]
+[C:/Users/auriv/OneDrive/Área de Trabalho/BACKUP_NOVO/Pós Graduaçao/ProjetoIntegrador/FrontEnd_GAMA/FrontEnd_GAMA/Shared/SurveyPrompt.razor]
 build_metadata.AdditionalFiles.TargetPath = U2hhcmVkXFN1cnZleVByb21wdC5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/auriv/OneDrive/Área de Trabalho/Pós Graduaçao/ProjetoIntegrador/FrontEnd_GAMA/FrontEnd_GAMA/_Imports.razor]
+[C:/Users/auriv/OneDrive/Área de Trabalho/BACKUP_NOVO/Pós Graduaçao/ProjetoIntegrador/FrontEnd_GAMA/FrontEnd_GAMA/_Imports.razor]
 build_metadata.AdditionalFiles.TargetPath = X0ltcG9ydHMucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/auriv/OneDrive/Área de Trabalho/Pós Graduaçao/ProjetoIntegrador/FrontEnd_GAMA/FrontEnd_GAMA/Shared/MainLayout.razor]
+[C:/Users/auriv/OneDrive/Área de Trabalho/BACKUP_NOVO/Pós Graduaçao/ProjetoIntegrador/FrontEnd_GAMA/FrontEnd_GAMA/Shared/MainLayout.razor]
 build_metadata.AdditionalFiles.TargetPath = U2hhcmVkXE1haW5MYXlvdXQucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = b-y3jgxkbt1x
 
-[C:/Users/auriv/OneDrive/Área de Trabalho/Pós Graduaçao/ProjetoIntegrador/FrontEnd_GAMA/FrontEnd_GAMA/Shared/NavMenu.razor]
+[C:/Users/auriv/OneDrive/Área de Trabalho/BACKUP_NOVO/Pós Graduaçao/ProjetoIntegrador/FrontEnd_GAMA/FrontEnd_GAMA/Shared/NavMenu.razor]
 build_metadata.AdditionalFiles.TargetPath = U2hhcmVkXE5hdk1lbnUucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = b-5ut4z06be2
 
-[C:/Users/auriv/OneDrive/Área de Trabalho/Pós Graduaçao/ProjetoIntegrador/FrontEnd_GAMA/FrontEnd_GAMA/Pages/Error.cshtml]
+[C:/Users/auriv/OneDrive/Área de Trabalho/BACKUP_NOVO/Pós Graduaçao/ProjetoIntegrador/FrontEnd_GAMA/FrontEnd_GAMA/Pages/Error.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRXJyb3IuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/auriv/OneDrive/Área de Trabalho/Pós Graduaçao/ProjetoIntegrador/FrontEnd_GAMA/FrontEnd_GAMA/Pages/_Host.cshtml]
+[C:/Users/auriv/OneDrive/Área de Trabalho/BACKUP_NOVO/Pós Graduaçao/ProjetoIntegrador/FrontEnd_GAMA/FrontEnd_GAMA/Pages/_Host.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcX0hvc3QuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/auriv/OneDrive/Área de Trabalho/Pós Graduaçao/ProjetoIntegrador/FrontEnd_GAMA/FrontEnd_GAMA/Pages/_Layout.cshtml]
+[C:/Users/auriv/OneDrive/Área de Trabalho/BACKUP_NOVO/Pós Graduaçao/ProjetoIntegrador/FrontEnd_GAMA/FrontEnd_GAMA/Pages/_Layout.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcX0xheW91dC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 

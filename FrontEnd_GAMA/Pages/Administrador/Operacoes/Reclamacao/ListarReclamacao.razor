@@ -1,16 +1,119 @@
 ﻿@page "/adm/dash/operar/reclamacao"
 @using FrontEnd_GAMA.Singleton;
+@using Core.Entities;
+@using SuporteFront
 @inject NavigationManager navigation
 @inject AdmOperationEntity ops;
-<h3>DashboardADM</h3>
+@inject HttpClient http;
+@inject ILocalStorageService local
+@inject IToastService toast
 
+
+@if (isAuth)
+{
+
+    <FrontEnd_GAMA.Components.Logout UserName="@Name">
+
+    </FrontEnd_GAMA.Components.Logout>
+    <FrontEnd_GAMA.Components.Component>
+
+    </FrontEnd_GAMA.Components.Component>
+    <h3>Listar Reclamações</h3>
+    @if (Reclamacaos.Count == 0)
+    {
+        <FrontEnd_GAMA.Components.Loading>
+
+        </FrontEnd_GAMA.Components.Loading>
+    }
+    else
+    {
+        <table class="table table-dark">
+            <thead>
+                <tr>
+                    <th scope="col">Comando</th>
+                    <th scope="col">Id</th>
+                    <th scope="col">Descricao</th>
+                    <th scope="col">NomeAutor</th>
+                    <th scope="col">SecretariaDestino</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var reclamacao in Reclamacaos)
+                {
+                    <tr>
+                        <td>
+                            <button type="button" class="btn-danger" @onclick="(async () => await AbrirModalDelecao(reclamacao.Id))">Deletar</button>/
+                            <button type="button" class="btn-secondary" disabled>Alterar</button>
+                        </td>
+                        <td>@reclamacao.Id</td>
+                        <td>@reclamacao.Texto</td>
+                        <td>@reclamacao.Autor.Nome</td>
+                        <td>@reclamacao.Destino.Nome</td>
+                    </tr>
+                }
+            </tbody>
+
+        </table>
+    }
+
+}
+else
+{
+    <FrontEnd_GAMA.Components.SemAutorizacao>
+
+    </FrontEnd_GAMA.Components.SemAutorizacao>
+}
 
 
 @code {
+    public List<Reclamacao> Reclamacaos = new List<Reclamacao>();
+    [CascadingParameter] public IModalService ModalService { get; set; }
+    ModalParameters modalParameters = new ModalParameters();
+    private bool isAuth = false;
+    private string Name { get; set; }
 
-    public void Navigate()
+    public void Reload()
     {
-        navigation.NavigateTo("/adm/" + ops.Operation + "/" + ops.Entity);
+        navigation.NavigateTo("/adm/dash/operar/Reclamacao", true);
+    }
+
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        var value = await local.GetItemAsync<string>("token");
+        TokenViewModel token = new TokenViewModel();
+        token.token = value;
+
+        if (!firstRender && !string.IsNullOrEmpty(value))
+            http.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", value);
+
+        if (firstRender) toast.ShowInfo("Autenticando");
+
+        var response = await http.PostAsJsonAsync<TokenViewModel>("login/auth", token);
+
+        if (response.StatusCode == System.Net.HttpStatusCode.OK)
+        {
+            if (firstRender) toast.ShowInfo("Autenticado");
+            Name = await response.Content.ReadAsStringAsync();
+            isAuth = true;
+        }
+        else isAuth = false;
+        if (isAuth)
+        {
+            var rec = await http.GetFromJsonAsync<IEnumerable<Reclamacao>>("reclamacao");
+            Reclamacaos = rec.ToList();
+            modalParameters.Add("Entity", ops.Entity);
+        }
+        StateHasChanged();
+        await base.OnAfterRenderAsync(firstRender);
+    }
+
+    public async Task AbrirModalDelecao(int id)
+    {
+        modalParameters.Add("Id", id);
+        var modal = ModalService.Show<FrontEnd_GAMA.Components.DeleteConfirm>("Deseja Deletar?", modalParameters);
+        var result = await modal.Result;
+
+        if (!result.Cancelled) Reload();
     }
 
 }

@@ -1,6 +1,10 @@
 ﻿@page "/login/servidor"
 @using Core.Entities
+@using SuporteFront;
 @inject NavigationManager NavigationManager
+@inject HttpClient http;
+@inject ILocalStorageService localStorage;
+@inject IToastService toast;
 <h3>Login</h3>
 <PageTitle>Login</PageTitle>
 
@@ -9,11 +13,11 @@
 <EditForm Model="@servidor" OnSubmit="@PainelServidor">
     <div class="form-goup">
         <label for="matricula" class="sr-only">Matricula:</label>
-        <InputText id="matricula" class="form-control" placeholder="Apenas numeros" @bind-Value="servidor.CPF" required />
+        <InputText id="matricula" class="form-control" placeholder="Apenas numeros" @bind-Value="servidor.Matricula" required />
     </div>
     <div class="form-group">
         <label for="password" class="sr-only">Senha:</label>
-        <InputText type="password" class="form-control" id="password" @bind-Value="servidor.Senha" required></InputText>
+        <InputText type="password" class="form-control" id="password" @bind-Value="servidor.Password" required></InputText>
     </div>
     <div class="form-group">
         <button type="submit" class="btn btn-primary">Efetuar Login</button>
@@ -23,11 +27,27 @@
 </EditForm>
 
 @code {
-    private Servidor servidor = new Servidor();
+    private LoginServidorViewModel servidor = new LoginServidorViewModel();
+    [CascadingParameter] public IModalService ModalService { get; set; }
 
-    public void PainelServidor()
+    public async Task PainelServidor()
     {
-        NavigationManager.NavigateTo("/painel/servidor");
+        toast.ShowInfo("Logando Usuário");
+        var response = await http.PostAsJsonAsync<LoginServidorViewModel>("login/servidor", servidor);
+        if (response.StatusCode == System.Net.HttpStatusCode.OK)
+        {
+            var token = await response.Content.ReadAsStringAsync();
+            await localStorage.SetItemAsync("token", token);
+            toast.ShowSuccess("Logado com sucesso");
+            http.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", token);
+            NavigationManager.NavigateTo("/painel/servidor",true);
+
+        }
+        else
+        {
+            toast.ShowError("Falha no login");
+            ModalService.Show<FrontEnd_GAMA.Components.ErrorDialog>("Verifique seus dados e tente novamente");
+        }
     }
     public void EfetuarCadastro()
     {

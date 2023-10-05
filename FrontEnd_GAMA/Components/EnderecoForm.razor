@@ -4,22 +4,22 @@
     <div class="form-row">
         <div class="form-group col-md-6">
             <label for="nome">Bairro:</label>
-            <InputText id="nome" class="form-control" @bind-Value="endereco.Bairro"></InputText>
+            <InputText id="nome" class="form-control" @bind-Value="endereco.Bairro" required></InputText>
         </div>
         <div class="form-group col-md-6">
-            <label for="senha">Rua:</label>
-            <InputText type="password" class="form-control" id="senha" @bind-Value="endereco.Rua"></InputText>
+            <label for="rua">Rua:</label>
+            <InputText type="text" class="form-control" id="rua" @bind-Value="endereco.Rua" required></InputText>
         </div>
     </div>
 
     <div class="form-row">
         <div class="form-group col-md-6">
             <label for="cpf">Logradouro:</label>
-            <InputText id="cpf" class="form-control" @bind-Value="endereco.Logradouro"></InputText>
+            <InputText id="cpf" class="form-control" @bind-Value="endereco.Logradouro" required></InputText>
         </div>
         <div class="form-group col-md-6">
             <label for="pispasep">CEP:</label>
-            <InputText id="pispasep" class="form-control" @bind-Value="endereco.CEP"></InputText>
+            <InputText id="pispasep" class="form-control" @bind-Value="endereco.CEP" required></InputText>
         </div>
     </div>
 </EditForm>

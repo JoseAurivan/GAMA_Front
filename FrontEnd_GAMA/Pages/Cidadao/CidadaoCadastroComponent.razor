@@ -1,0 +1,110 @@
+﻿@page "/cadastroComp"
+@inject HttpClient http
+@inject NavigationManager NavigationManager
+@inject ILocalStorageService local
+@inject IToastService toast
+@using Core.Entities
+@using System.Text.Json.Nodes;
+@using System.Text.Json;
+@using FrontEnd_GAMA.Components;
+@using SuporteFront;
+
+
+<EditForm Model="@cidadaoEnderecoViewModel" OnSubmit="EfetuarCadastro">
+    <div class="form-row">
+        <div class="form-group col-md-6">
+            <label for="nome">Nome:</label>
+            <InputText id="nome" class="form-control" @bind-Value="cidadaoEnderecoViewModel.Cidadao.Nome"></InputText>
+        </div>
+        <div class="form-group col-md-6">
+            <label for="senha">Senha:</label>
+            <InputText type="password" class="form-control" id="senha" @bind-Value="cidadaoEnderecoViewModel.Cidadao.Senha"></InputText>
+        </div>
+    </div>
+
+    <div class="form-row">
+        <div class="form-group col-md-6">
+            <label for="cpf">CPF:</label>
+            <InputText id="cpf" class="form-control" @bind-Value="cidadaoEnderecoViewModel.Cidadao.CPF"></InputText>
+        </div>
+        <div class="form-group col-md-6">
+            <label for="pispasep">PIS/PASEP:</label>
+            <InputText id="pispasep" class="form-control" @bind-Value="cidadaoEnderecoViewModel.Cidadao.PISPASEP"></InputText>
+        </div>
+    </div>
+
+    <div class="form-row">
+        <div class="form-group col-md-6">
+            <label for="telefone">Telefone:</label>
+            <InputText id="telefone" class="form-control" @bind-Value="cidadaoEnderecoViewModel.Cidadao.Telefone"></InputText>
+        </div>
+        <div class="form-group col-md-6">
+            <label for="email">Email:</label>
+            <InputText id="email" type="email" class="form-control" @bind-Value="cidadaoEnderecoViewModel.Cidadao.Email"></InputText>
+        </div>
+    </div>
+
+    <EnderecoForm endereco="@cidadaoEnderecoViewModel.Endereco">
+
+    </EnderecoForm>
+
+    <button type="submit" class="btn btn-success">Cadastrar</button>
+    <button type="reset" class="btn btn-outline-warning">Limpar</button>
+</EditForm>
+
+
+
+
+
+@code {
+    public string message = "Não foi possível cadastrar um novo cidadão no sistema.";
+
+    [CascadingParameter]public IModalService ModalService { get; set; }
+
+    [Parameter]
+    public CidadaoEnderecoViewModel cidadaoEnderecoViewModel { get; set; }
+
+
+
+    private async Task EfetuarCadastro()
+    {
+        toast.ShowInfo("Cadastrando Cidadão..");
+        var response = await http.PostAsJsonAsync<CidadaoEnderecoViewModel>("cidadao", cidadaoEnderecoViewModel);
+        if (response.StatusCode == System.Net.HttpStatusCode.OK)
+        {
+            toast.ShowSuccess("Cadastrado ");
+            var srvLogin = new LoginCidadaoViewModel();
+            srvLogin.Cpf = cidadaoEnderecoViewModel.Cidadao.CPF;
+            srvLogin.Password =cidadaoEnderecoViewModel.Cidadao.Senha;
+            var authResponse = await http.PostAsJsonAsync<LoginCidadaoViewModel>("login/cidadao", srvLogin);
+            if (authResponse.IsSuccessStatusCode)
+            {
+                toast.ShowSuccess("Autenticado ");
+                var token = await authResponse.Content.ReadAsStringAsync();
+                await local.SetItemAsync("token", token);
+                http.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", token);
+                NavigationManager.NavigateTo("/painel/cidadao");
+            }
+            else
+            {
+                toast.ShowError("Falha na Autenticação");
+                var modalScreen = ModalService.Show<FrontEnd_GAMA.Components.ErrorDialog>("Falha na autenticação");
+                var result = await modalScreen.Result;
+                if (result is not null)
+                {
+                    NavigationManager.NavigateTo("/cadastro/cidadao", true);
+                }
+            }
+        }
+        else
+        {
+            toast.ShowError("Falha ao criar cidadão");
+            var modalScreen = ModalService.Show<FrontEnd_GAMA.Components.ErrorDialog>();
+            var result = await modalScreen.Result;
+            if (result is not null)
+            {
+                NavigationManager.NavigateTo("/cadastro/cidadao", true);
+            }
+        }
+    }
+}

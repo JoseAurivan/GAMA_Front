@@ -1,0 +1,25 @@
+﻿@inject ILocalStorageService local
+@inject HttpClient http
+@inject NavigationManager navigation
+@inject IToastService toast
+
+<nav class="navbar navbar-light  bg-light justify-content-between" style="margin-bottom:10px">
+    <a class="navbar-brand" style="margin:10px">Olá @UserName</a>
+    <form class="form-inline" style="margin:10px">
+        <span class=""> </span>
+        <button class="btn btn-danger my-2 my-sm-0" @onclick="(Sair)" type="submit">Sair</button>
+    </form>
+</nav>
+
+@code {
+    [Parameter]public string UserName { get; set; }
+
+    public async Task Sair()
+    {
+        toast.ShowWarning("Fazendo Logout");
+        await local.RemoveItemAsync("token");
+        navigation.NavigateTo("/", true);
+        http.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("", "");
+        
+    }
+}

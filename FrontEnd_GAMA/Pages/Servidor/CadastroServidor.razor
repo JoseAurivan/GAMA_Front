@@ -2,76 +2,17 @@
 @inject HttpClient http
 @inject NavigationManager navigation
 @using Core.Entities
+@using SuporteFront
 <h3>Cadastro de Servidor</h3>
 
-<EditForm Model="@servidor" OnSubmit="EfetuarCadastro">
-    <div class="form-row">
-        <div class="form-group col-md-6">
-            <label for="nome">Nome:</label>
-            <InputText id="nome" required class="form-control" @bind-Value="servidor.Nome"></InputText>
-        </div>
-        <div class="form-group col-md-6">
-            <label for="senha">Senha:</label>
-            <InputText type="password" required class="form-control" id="senha" @bind-Value="servidor.Senha"></InputText>
-        </div>
-    </div>
+<CadastroServidorComponent servidor="@servidor">
 
-    <div class="form-row">
-        <div class="form-group col-md-6">
-            <label for="cpf">CPF:</label>
-            <InputText id="cpf" required class="form-control" @bind-Value="servidor.CPF"></InputText>
-        </div>
-        <div class="form-group col-md-6">
-            <label for="pispasep">Matricula:</label>
-            <InputText id="pispasep" required class="form-control" @bind-Value="servidor.Matricula"></InputText>
-        </div>
-    </div>
-
-    <div class="form-row">
-        <div class="form-group col-md-6">
-            <label for="telefone">Telefone:</label>
-            <InputText id="telefone" required class="form-control" @bind-Value="servidor.Telefone"></InputText>
-        </div>
-        <div class="form-group col-md-6">
-            <label for="email">Email:</label>
-            <InputText id="email" required type="email" class="form-control" @bind-Value="servidor.Email"></InputText>
-        </div>
-    </div>
-    <button type="submit" class="btn btn-success">Cadastrar</button>
-    <button type="reset" class="btn btn-outline-warning">Limpar</button>
-</EditForm>
+</CadastroServidorComponent>
 
 
 
 
 @code {
-    List<Secretaria> secretarias = new List<Secretaria>();
-    List<Cargo> cargos = new List<Cargo>();
+    public ServidorViewModel servidor = new ServidorViewModel();
 
-
-    private Servidor servidor = new Servidor();
-
-    protected override async Task OnInitializedAsync()
-    {
-        var secretariasResponse = await http.GetFromJsonAsync<IEnumerable<Secretaria>>("secretaria");
-        var cargosResponse = await  http.GetFromJsonAsync<IEnumerable<Cargo>>("cargo");
-
-        if (secretariasResponse is not null)
-            secretarias = secretariasResponse.ToList();
-        if (cargosResponse is not null)
-            cargos = cargosResponse.ToList();
-
-        await base.OnInitializedAsync();
-    }
-
-    private async Task EfetuarCadastro()
-    {
-        var response = await http.PostAsJsonAsync<Servidor>("servidor", servidor);
-
-        if (response.StatusCode == System.Net.HttpStatusCode.OK)
-        {
-            navigation.NavigateTo("/painel/servidor");
-        }
-
-    }
 }
