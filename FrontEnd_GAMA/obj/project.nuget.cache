@@ -1,12 +1,17 @@
 {
   "version": 2,
-  "dgSpecHash": "L4nIGf/ruFpylWrDBRWcQvGULidbhE0AophdfurDywqbwShGc9+3j4PfA4yr+T1EYgRbIjje9K0t1yf4hygoxQ==",
+  "dgSpecHash": "Loe2Ibaj58vKh7gJ0HH1JmDmfmvv0XphJprJ+iW6r4wxelKfeeUfCmWtCc90XxtCGxdAThaOog29oiq+ZX88eA==",
   "success": true,
   "projectFilePath": "C:\\Users\\auriv\\OneDrive\\Área de Trabalho\\BACKUP_NOVO\\Pós Graduaçao\\ProjetoIntegrador\\FrontEnd_GAMA\\FrontEnd_GAMA\\FrontEnd_GAMA.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\auriv\\.nuget\\packages\\blazored.localstorage\\4.4.0\\blazored.localstorage.4.4.0.nupkg.sha512",
     "C:\\Users\\auriv\\.nuget\\packages\\blazored.modal\\7.1.0\\blazored.modal.7.1.0.nupkg.sha512",
     "C:\\Users\\auriv\\.nuget\\packages\\blazored.toast\\4.1.0\\blazored.toast.4.1.0.nupkg.sha512",
+    "C:\\Users\\auriv\\.nuget\\packages\\core\\1.0.1\\core.1.0.1.nupkg.sha512",
+    "C:\\Users\\auriv\\.nuget\\packages\\jose.gama.core\\1.0.2\\jose.gama.core.1.0.2.nupkg.sha512",
+    "C:\\Users\\auriv\\.nuget\\packages\\jose.gama.support.front\\1.0.2\\jose.gama.support.front.1.0.2.nupkg.sha512",
+    "C:\\Users\\auriv\\.nuget\\packages\\jquery\\1.9.1\\jquery.1.9.1.nupkg.sha512",
+    "C:\\Users\\auriv\\.nuget\\packages\\knockoutjs\\2.2.1\\knockoutjs.2.2.1.nupkg.sha512",
     "C:\\Users\\auriv\\.nuget\\packages\\microsoft.aspnetcore.authorization\\6.0.22\\microsoft.aspnetcore.authorization.6.0.22.nupkg.sha512",
     "C:\\Users\\auriv\\.nuget\\packages\\microsoft.aspnetcore.components\\6.0.22\\microsoft.aspnetcore.components.6.0.22.nupkg.sha512",
     "C:\\Users\\auriv\\.nuget\\packages\\microsoft.aspnetcore.components.analyzers\\6.0.22\\microsoft.aspnetcore.components.analyzers.6.0.22.nupkg.sha512",
@@ -25,6 +30,7 @@
     "C:\\Users\\auriv\\.nuget\\packages\\microsoft.identitymodel.tokens\\7.0.0\\microsoft.identitymodel.tokens.7.0.0.nupkg.sha512",
     "C:\\Users\\auriv\\.nuget\\packages\\microsoft.jsinterop\\6.0.12\\microsoft.jsinterop.6.0.12.nupkg.sha512",
     "C:\\Users\\auriv\\.nuget\\packages\\microsoft.jsinterop.webassembly\\6.0.3\\microsoft.jsinterop.webassembly.6.0.3.nupkg.sha512",
+    "C:\\Users\\auriv\\.nuget\\packages\\sammy.js\\0.7.4\\sammy.js.0.7.4.nupkg.sha512",
     "C:\\Users\\auriv\\.nuget\\packages\\system.identitymodel.tokens.jwt\\7.0.0\\system.identitymodel.tokens.jwt.7.0.0.nupkg.sha512",
     "C:\\Users\\auriv\\.nuget\\packages\\system.io.pipelines\\6.0.3\\system.io.pipelines.6.0.3.nupkg.sha512",
     "C:\\Users\\auriv\\.nuget\\packages\\system.runtime.compilerservices.unsafe\\6.0.0\\system.runtime.compilerservices.unsafe.6.0.0.nupkg.sha512"

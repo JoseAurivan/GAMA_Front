@@ -10,13 +10,11 @@
     <PackageReference Include="Blazored.LocalStorage" Version="4.4.0" />
     <PackageReference Include="Blazored.Modal" Version="7.1.0" />
     <PackageReference Include="Blazored.Toast" Version="4.1.0" />
+    <PackageReference Include="JOSE.GAMA.CORE" Version="1.0.2" />
+    <PackageReference Include="JOSE.GAMA.SUPPORT.FRONT" Version="1.0.2" />
     <PackageReference Include="Microsoft.AspNetCore.Components.Authorization" Version="6.0.22" />
     <PackageReference Include="System.IdentityModel.Tokens.Jwt" Version="7.0.0" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <ProjectReference Include="..\..\BackEnd_GAMA\BackEnd_GAMA\Core.csproj" />
-    <ProjectReference Include="..\..\BackEnd_GAMA\SuporteFront\SuporteFront.csproj" />
+	<PackageReference Include="Core" Version="1.0.1" />
   </ItemGroup>
 
 </Project>

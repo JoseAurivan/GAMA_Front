@@ -1,5 +1,6 @@
 global using Microsoft.AspNetCore.Components.Authorization;
 global using Blazored.LocalStorage;
+
 using FrontEnd_GAMA;
 using FrontEnd_GAMA.Data;
 using FrontEnd_GAMA.Singleton;
