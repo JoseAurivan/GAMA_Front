@@ -54,7 +54,7 @@
         <div class="form-row">
             <div class="form-group col-md-6">
                 <lable for="text">Secretaria Destino</lable>
-                <InputSelect id="texto" class="form-control" @bind-Value="servidor.SecretariaId">
+                <InputSelect id="texto" required class="form-control" @bind-Value="servidor.SecretariaId">
                     @foreach (var secretaria in secretarias)
                     {
                         <option value="@secretaria.Id">@secretaria.Nome</option>
@@ -62,8 +62,8 @@
                 </InputSelect>
             </div>
             <div class="form-group col-md-6">
-                <lable for="text">Secretaria Destino</lable>
-                <InputSelect id="texto" class="form-control" @bind-Value="servidor.CargoId">
+                <lable for="text">Cargo</lable>
+                <InputSelect id="texto" required class="form-control" @bind-Value="servidor.CargoId">
                     @foreach (var cargo in cargos)
                     {
                         <option value="@cargo.Id">@cargo.Nome/@cargo.Hierarquia</option>

@@ -16,15 +16,15 @@
         <div class="form-row">
             <div class="form-group col-md-6">
                 <label for="descricao">Telefone do Requerente:</label>
-                <InputText id="descricao" placeholder="00000000000 - Apenas Números" class="form-control" @bind-Value="chamado.Telefone"></InputText>
+                <InputText id="descricao" required placeholder="00000000000 - Apenas Números" class="form-control" @bind-Value="chamado.Telefone"></InputText>
             </div>
             <div class="form-group col-md-6">
                 <label for="descricao">Descreva Sua Situação:</label>
-                <InputTextArea id="descricao" class="form-control" @bind-Value="chamado.Descricao"></InputTextArea>
+                <InputTextArea id="descricao" required class="form-control" @bind-Value="chamado.Descricao"></InputTextArea>
             </div>
             <div class="form-group col-md-6">
                 <lable for="text">Secretaria Destino</lable>
-                <InputSelect id="texto" class="form-control" @bind-Value="chamado.SecretariaId">
+                <InputSelect required id="texto" class="form-control" @bind-Value="chamado.SecretariaId">
                     @foreach (var secretaria in secretarias)
                     {
                         <option value="@secretaria.Id">@secretaria.Nome</option>

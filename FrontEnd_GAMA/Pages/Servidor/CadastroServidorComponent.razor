@@ -41,7 +41,7 @@
     <div class="form-row">
         <div class="form-group col-md-6">
             <label for="text">Secretaria Destino</label>
-            <InputSelect class="form-control" @bind-Value="servidor.SecretariaId" required>
+            <InputSelect  class="form-control" @bind-Value="servidor.SecretariaId" required>
                 <option selected>....</option>
                 @foreach (var secretaria in secretarias)
                 {
@@ -51,7 +51,7 @@
         </div>
         <div class="form-group col-md-6">
             <lable for="text"> Cargo</lable>
-            <InputSelect class="form-control" @bind-Value="servidor.CargoId" required>
+            <InputSelect  class="form-control" @bind-Value="servidor.CargoId" required>
                 <option selected>....</option>
                 @foreach (var cargo in cargos)
                 {

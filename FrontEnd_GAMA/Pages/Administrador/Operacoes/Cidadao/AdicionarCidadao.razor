@@ -26,33 +26,33 @@
         <div class="form-row">
             <div class="form-group col-md-6">
                 <label for="nome">Nome:</label>
-                <InputText id="nome" class="form-control" @bind-Value="cidadaoEnderecoViewModel.Cidadao.Nome"></InputText>
+                <InputText id="nome" required class="form-control" @bind-Value="cidadaoEnderecoViewModel.Cidadao.Nome"></InputText>
             </div>
             <div class="form-group col-md-6">
                 <label for="senha">Senha:</label>
-                <InputText type="password" class="form-control" id="senha" @bind-Value="cidadaoEnderecoViewModel.Cidadao.Senha"></InputText>
+                <InputText type="password" required class="form-control" id="senha" @bind-Value="cidadaoEnderecoViewModel.Cidadao.Senha"></InputText>
             </div>
         </div>
 
         <div class="form-row">
             <div class="form-group col-md-6">
                 <label for="cpf">CPF:</label>
-                <InputText id="cpf" class="form-control" @bind-Value="cidadaoEnderecoViewModel.Cidadao.CPF"></InputText>
+                <InputText id="cpf" required class="form-control" @bind-Value="cidadaoEnderecoViewModel.Cidadao.CPF"></InputText>
             </div>
             <div class="form-group col-md-6">
                 <label for="pispasep">PIS/PASEP:</label>
-                <InputText id="pispasep" class="form-control" @bind-Value="cidadaoEnderecoViewModel.Cidadao.PISPASEP"></InputText>
+                <InputText id="pispasep" required class="form-control" @bind-Value="cidadaoEnderecoViewModel.Cidadao.PISPASEP"></InputText>
             </div>
         </div>
 
         <div class="form-row">
             <div class="form-group col-md-6">
                 <label for="telefone">Telefone:</label>
-                <InputText id="telefone" class="form-control" @bind-Value="cidadaoEnderecoViewModel.Cidadao.Telefone"></InputText>
+                <InputText id="telefone" required class="form-control" @bind-Value="cidadaoEnderecoViewModel.Cidadao.Telefone"></InputText>
             </div>
             <div class="form-group col-md-6">
                 <label for="email">Email:</label>
-                <InputText id="email" type="email" class="form-control" @bind-Value="cidadaoEnderecoViewModel.Cidadao.Email"></InputText>
+                <InputText id="email" required type="email" class="form-control" @bind-Value="cidadaoEnderecoViewModel.Cidadao.Email"></InputText>
             </div>
         </div>
 

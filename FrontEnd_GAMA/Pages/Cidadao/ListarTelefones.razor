@@ -82,8 +82,9 @@ else
             try{
                 if (firstRender) toast.ShowInfo("Obtendo Secretarias");
                 var sec = await http.GetFromJsonAsync<IEnumerable<Secretaria>>("secretaria");
-                if (sec is not null)
+                if (sec is not null){
                     secretarias = sec.ToList();
+                }
             }catch(Exception ex)
             {
                 toast.ShowError("Algo deu errado, contate o suporte");

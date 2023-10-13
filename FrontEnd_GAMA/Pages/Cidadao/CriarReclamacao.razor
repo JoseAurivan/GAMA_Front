@@ -17,11 +17,11 @@
             <div class="form-row">
                 <div class="form-group col-md-6">
                     <lable for="text">Escreva sua reclamacao</lable>
-                    <InputTextArea id="texto" class="form-control" @bind-Value="reclamacao.Texto"></InputTextArea>
+                    <InputTextArea id="texto" class="form-control" required @bind-Value="reclamacao.Texto"></InputTextArea>
                 </div>
                 <div class="form-group col-md-6">
                     <lable for="text">Secretaria Destino</lable>
-                    <InputSelect id="texto" class="form-control" @bind-Value="reclamacao.SecretariaId">
+                    <InputSelect id="texto" class="form-control" required @bind-Value="reclamacao.SecretariaId">
                         @foreach (var secretaria in secretarias)
                         {
                             <option value="@secretaria.Id">@secretaria.Nome</option>
@@ -90,20 +90,27 @@ else
     {
         reclamacao.DataCriacao = DateTime.Now;
         reclamacao.AutorCPF = LogadoCPF;
-        var response = await http.PostAsJsonAsync<ReclamacaoViewModel>("reclamacao", reclamacao);
-        if (response.StatusCode == System.Net.HttpStatusCode.OK)
+        if(reclamacao.SecretariaId > 0)
         {
-            //TODO alert
-            navigation.NavigateTo("/painel/cidadao/reclamacao", true);
+            var response = await http.PostAsJsonAsync<ReclamacaoViewModel>("reclamacao", reclamacao);
+            if (response.StatusCode == System.Net.HttpStatusCode.OK)
+            {
+                toast.ShowSuccess("Reclamação gravada com sucesso");
+                navigation.NavigateTo("/painel/cidadao/reclamacao", true);
+            }
+            else
+            {
+                var modalScreen = ModalService.Show<FrontEnd_GAMA.Components.ErrorDialog>();
+                var result = await modalScreen.Result;
+                if (result is not null)
+                {
+                    navigation.NavigateTo("/painel/cidadao/reclamacao", true);
+                }
+            }
         }
         else
         {
-            var modalScreen = ModalService.Show<FrontEnd_GAMA.Components.ErrorDialog>();
-            var result = await modalScreen.Result;
-            if (result is not null)
-            {
-                navigation.NavigateTo("/painel/cidadao/reclamacao", true);
-            }
+            toast.ShowWarning("Preencha todos os campos do formulário");
         }
 
     }

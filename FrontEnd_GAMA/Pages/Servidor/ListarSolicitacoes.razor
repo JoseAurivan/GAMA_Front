@@ -70,7 +70,7 @@ else
 
         if (!firstRender && !string.IsNullOrEmpty(value))
             http.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", value);
-        
+
         if(firstRender)
             toast.ShowInfo("Autenticando");
 
@@ -115,6 +115,10 @@ else
             {
                 if(firstRender)toast.ShowSuccess("Chamados Encontrados");
                 chamados = cha.ToList();
+            }
+            else
+            {
+                toast.ShowWarning("Sem chamados pra essa secretaria");
             }
 
         }
