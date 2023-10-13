@@ -26,6 +26,7 @@
             <select @bind=@entity id="entidade" required class="custom-select mr-sm-2">
                 @if(operation.Equals("add"))
                 {
+                    <option value=""> Selecione uma opcao </option>
                     <option value="Cidadao">Cidadao</option>
                     <option value="Servidor">Servidor</option>
                     <option value="Secretaria">Secretaria</option>
@@ -34,6 +35,7 @@
                 }
                 else
                 {
+                    <option value=""> Selecione uma opcao </option>
                     <option value="Cidadao">Cidadao</option>
                     <option value="Servidor">Servidor</option>
                     <option value="Secretaria">Secretaria</option>
@@ -98,7 +100,9 @@ else
     {
         ops.Operation = operation;
         ops.Entity = entity;
-        navigation.NavigateTo("/adm/dash/" + ops.Operation + "/" + ops.Entity);
+        if(!string.IsNullOrEmpty(operation) && !string.IsNullOrEmpty(entity))
+            navigation.NavigateTo("/adm/dash/" + ops.Operation + "/" + ops.Entity);
+        else toast.ShowWarning("Preencha todos os campos");
     }
 
 }

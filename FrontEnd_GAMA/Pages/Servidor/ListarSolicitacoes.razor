@@ -23,25 +23,29 @@
         </tr>
     </thead>
    <tbody>
-       <tr>
+       
            @if(chamados.Count == 0)
-                {
+            {
+                <tr>
                     <FrontEnd_GAMA.Components.Loading>
 
                     </FrontEnd_GAMA.Components.Loading>
+                </tr>
                 }
                 else
                 {
                     @foreach(var chamado in chamados)
                     {
-                        <td scope="col">@chamado.SolicitadoPor.Nome</td>
-                        <td scope="col">@chamado.SecretariaDestino.Nome</td>
-                        <td scope="col">@chamado.StatusSolicitacao</td>
-                        <td scope="col">@chamado.Inicio</td>
+                        <tr>
+                            <td scope="col">@chamado.SolicitadoPor.Nome</td>
+                            <td scope="col">@chamado.SecretariaDestino.Nome</td>
+                            <td scope="col">@chamado.StatusSolicitacao</td>
+                            <td scope="col">@chamado.Inicio</td>
+                        </tr>
                     }
                 }
 
-       </tr>
+       
    </tbody>
 
 </table>

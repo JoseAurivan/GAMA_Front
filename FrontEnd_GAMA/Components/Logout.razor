@@ -16,9 +16,10 @@
 
     public async Task Sair()
     {
+        navigation.NavigateTo("/", true);
         toast.ShowWarning("Fazendo Logout");
         await local.RemoveItemAsync("token");
-        navigation.NavigateTo("/", true);
+
         http.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Invalid", "Invalid");
         
     }
