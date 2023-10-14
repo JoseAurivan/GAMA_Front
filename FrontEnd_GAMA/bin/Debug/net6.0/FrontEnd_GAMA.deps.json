@@ -11,7 +11,6 @@
           "Blazored.LocalStorage": "4.4.0",
           "Blazored.Modal": "7.1.0",
           "Blazored.Toast": "4.1.0",
-          "Core": "1.0.1",
           "JOSE.GAMA.CORE": "1.0.2",
           "JOSE.GAMA.SUPPORT.FRONT": "1.0.2",
           "Microsoft.AspNetCore.Components.Authorization": "6.0.22",
@@ -59,13 +58,6 @@
           }
         }
       },
-      "Core/1.0.1": {
-        "dependencies": {
-          "Sammy.js": "0.7.4",
-          "jQuery": "1.9.1",
-          "knockoutjs": "2.2.1"
-        }
-      },
       "JOSE.GAMA.CORE/1.0.2": {
         "runtime": {
           "lib/net6.0/Core.dll": {
@@ -85,8 +77,6 @@
           }
         }
       },
-      "jQuery/1.9.1": {},
-      "knockoutjs/2.2.1": {},
       "Microsoft.AspNetCore.Authorization/6.0.22": {
         "dependencies": {
           "Microsoft.AspNetCore.Metadata": "6.0.22",
@@ -251,11 +241,6 @@
           }
         }
       },
-      "Sammy.js/0.7.4": {
-        "dependencies": {
-          "jQuery": "1.9.1"
-        }
-      },
       "System.IdentityModel.Tokens.Jwt/7.0.0": {
         "dependencies": {
           "Microsoft.IdentityModel.JsonWebTokens": "7.0.0",
@@ -306,13 +291,6 @@
       "path": "blazored.toast/4.1.0",
       "hashPath": "blazored.toast.4.1.0.nupkg.sha512"
     },
-    "Core/1.0.1": {
-      "type": "package",
-      "serviceable": true,
-      "sha512": "sha512-NG95wY9y8ighAF/X/xqXDlEOhf99Xk2bwiYN5sJgXqdv3fbmkIiYMmDUW1hzGaFtyWShENUZ6BnPRA/jk7nr4w==",
-      "path": "core/1.0.1",
-      "hashPath": "core.1.0.1.nupkg.sha512"
-    },
     "JOSE.GAMA.CORE/1.0.2": {
       "type": "package",
       "serviceable": true,
@@ -326,20 +304,6 @@
       "sha512": "sha512-Rgda6OndZx6gcM9jvJwZSL04BW6mCuAcjgjUn0ukUOSv66kDLrUBpRzPAw2OIiwp9lGYaVHos37eAVvhndMjVw==",
       "path": "jose.gama.support.front/1.0.2",
       "hashPath": "jose.gama.support.front.1.0.2.nupkg.sha512"
-    },
-    "jQuery/1.9.1": {
-      "type": "package",
-      "serviceable": true,
-      "sha512": "sha512-HiX9icLyiJGgiL5EOIn0d1MBPHVV2M9mzWT4mANdniDNR51RvAFTyKEXEd2+5yQJ4PJ5xePOR61Vjj/omQzYcw==",
-      "path": "jquery/1.9.1",
-      "hashPath": "jquery.1.9.1.nupkg.sha512"
-    },
-    "knockoutjs/2.2.1": {
-      "type": "package",
-      "serviceable": true,
-      "sha512": "sha512-+EJyE1DT7WApO0HnQr1TDuIJy8jqWOTlteJyB2CQTK6XU11naJhAwu8I35bP8oxS8kCuIry9S4jIpPMULw3xvw==",
-      "path": "knockoutjs/2.2.1",
-      "hashPath": "knockoutjs.2.2.1.nupkg.sha512"
     },
     "Microsoft.AspNetCore.Authorization/6.0.22": {
       "type": "package",
@@ -466,13 +430,6 @@
       "sha512": "sha512-4B7RdZ01eKShey9MllKrVjEJZN/Y1Hvku/qTwVKSwt/n+KgFmyYEkEMbSdKDWB7MbvCPZykCQbkKnKfLzML9sg==",
       "path": "microsoft.jsinterop.webassembly/6.0.3",
       "hashPath": "microsoft.jsinterop.webassembly.6.0.3.nupkg.sha512"
-    },
-    "Sammy.js/0.7.4": {
-      "type": "package",
-      "serviceable": true,
-      "sha512": "sha512-jWRXtY9wMa1GDn3yycBpELFS2OWDnyArL1c8tJNOzTeVfCsaDmKmaN8U1PoWiJYPaueAawlqaRZFG5YegTlzLA==",
-      "path": "sammy.js/0.7.4",
-      "hashPath": "sammy.js.0.7.4.nupkg.sha512"
     },
     "System.IdentityModel.Tokens.Jwt/7.0.0": {
       "type": "package",

@@ -41,8 +41,9 @@
                 @foreach (var servidor in Servidors)
                 {
                     <tr>
-                        <td><button type="button" class="btn-danger" @onclick="(async() => await AbrirModal(servidor.Id))">Deletar</button>/
-                            <button type="button" class="btn-secondary" @onclick="(async() => await AbrirModalAlterar(servidor.Id))">Alterar</button></td>
+                        <td>
+                            <button type="button" class="btn-outline-danger" disabled @onclick="(async() => await AbrirModal(servidor.Id))">Deletar</button>/
+                            <button type="button" class="btn-outline-secondary" disabled @onclick="(async() => await AbrirModalAlterar(servidor.Id))">Alterar</button></td>
                         <td>@servidor.Id</td>
                         <td>@servidor.Nome</td>
                         <td>@servidor.Matricula</td>

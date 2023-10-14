@@ -42,7 +42,7 @@
                 {
                     <tr>
                         <td>
-                            <button type="button" class="btn-danger" @onclick="(async () => await AbrirModalDelecao(reclamacao.Id))">Deletar</button>/
+                            <button type="button" class="btn-outline-danger" disabled @onclick="(async () => await AbrirModalDelecao(reclamacao.Id))">Deletar</button>/
                             <button type="button" class="btn-outline-secondary" disabled>Alterar</button>
                         </td>
                         <td>@reclamacao.Id</td>

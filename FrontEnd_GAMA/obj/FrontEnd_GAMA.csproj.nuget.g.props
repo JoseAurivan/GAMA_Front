@@ -18,8 +18,4 @@
     <Import Project="$(NuGetPackageRoot)blazored.toast\4.1.0\buildTransitive\Blazored.Toast.props" Condition="Exists('$(NuGetPackageRoot)blazored.toast\4.1.0\buildTransitive\Blazored.Toast.props')" />
     <Import Project="$(NuGetPackageRoot)blazored.modal\7.1.0\buildTransitive\Blazored.Modal.props" Condition="Exists('$(NuGetPackageRoot)blazored.modal\7.1.0\buildTransitive\Blazored.Modal.props')" />
   </ImportGroup>
-  <PropertyGroup Condition=" '$(ExcludeRestorePackageImports)' != 'true' ">
-    <PkgjQuery Condition=" '$(PkgjQuery)' == '' ">C:\Users\auriv\.nuget\packages\jquery\1.9.1</PkgjQuery>
-    <PkgSammy_js Condition=" '$(PkgSammy_js)' == '' ">C:\Users\auriv\.nuget\packages\sammy.js\0.7.4</PkgSammy_js>
-  </PropertyGroup>
 </Project>

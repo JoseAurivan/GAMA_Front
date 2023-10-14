@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "MM9vNMrkPbPXAA3T4po+dRkq+6OBHUPSWvSkPvx3HCY=",
+  "Hash": "R/IY6T9pGOq5Rha/sTTiTvYVj/mM6e/IO4Y6Oa4rF80=",
   "Source": "FrontEnd_GAMA",
   "BasePath": "_content/FrontEnd_GAMA",
   "Mode": "Default",
@@ -136,6 +136,23 @@
       "OriginalItemSpec": "wwwroot\\css\\bootstrap\\bootstrap.min.css.map"
     },
     {
+      "Identity": "C:\\Users\\auriv\\OneDrive\\Área de Trabalho\\BACKUP_NOVO\\Pós Graduaçao\\ProjetoIntegrador\\FrontEnd_GAMA\\FrontEnd_GAMA\\wwwroot\\css\\open-iconic\\FONT-LICENSE",
+      "SourceId": "FrontEnd_GAMA",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\auriv\\OneDrive\\Área de Trabalho\\BACKUP_NOVO\\Pós Graduaçao\\ProjetoIntegrador\\FrontEnd_GAMA\\FrontEnd_GAMA\\wwwroot\\",
+      "BasePath": "_content/FrontEnd_GAMA",
+      "RelativePath": "css/open-iconic/FONT-LICENSE",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\css\\open-iconic\\FONT-LICENSE"
+    },
+    {
       "Identity": "C:\\Users\\auriv\\OneDrive\\Área de Trabalho\\BACKUP_NOVO\\Pós Graduaçao\\ProjetoIntegrador\\FrontEnd_GAMA\\FrontEnd_GAMA\\wwwroot\\css\\open-iconic\\font\\css\\open-iconic-bootstrap.min.css",
       "SourceId": "FrontEnd_GAMA",
       "SourceType": "Discovered",
@@ -236,23 +253,6 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\css\\open-iconic\\font\\fonts\\open-iconic.woff"
-    },
-    {
-      "Identity": "C:\\Users\\auriv\\OneDrive\\Área de Trabalho\\BACKUP_NOVO\\Pós Graduaçao\\ProjetoIntegrador\\FrontEnd_GAMA\\FrontEnd_GAMA\\wwwroot\\css\\open-iconic\\FONT-LICENSE",
-      "SourceId": "FrontEnd_GAMA",
-      "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\auriv\\OneDrive\\Área de Trabalho\\BACKUP_NOVO\\Pós Graduaçao\\ProjetoIntegrador\\FrontEnd_GAMA\\FrontEnd_GAMA\\wwwroot\\",
-      "BasePath": "_content/FrontEnd_GAMA",
-      "RelativePath": "css/open-iconic/FONT-LICENSE",
-      "AssetKind": "All",
-      "AssetMode": "All",
-      "AssetRole": "Primary",
-      "RelatedAsset": "",
-      "AssetTraitName": "",
-      "AssetTraitValue": "",
-      "CopyToOutputDirectory": "Never",
-      "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\css\\open-iconic\\FONT-LICENSE"
     },
     {
       "Identity": "C:\\Users\\auriv\\OneDrive\\Área de Trabalho\\BACKUP_NOVO\\Pós Graduaçao\\ProjetoIntegrador\\FrontEnd_GAMA\\FrontEnd_GAMA\\wwwroot\\css\\open-iconic\\ICON-LICENSE",

@@ -38,7 +38,7 @@
                 @foreach (var chamado in Chamados)
                 {
                     <tr>
-                        <td><button type="button" class="btn-danger" @onclick="(async () => await AbrirModalDelecao(chamado.Id))">Deletar</button>/
+                        <td><button type="button" class="btn-outline-danger " disabled @onclick="(async () => await AbrirModalDelecao(chamado.Id))">Deletar</button>/
                             <button type="button" class="btn-outline-secondary" disabled>Alterar</button>
                         </td>
                         <td>@chamado.Descricao</td>
